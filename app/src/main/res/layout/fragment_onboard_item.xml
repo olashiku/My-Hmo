@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".views.fragment.UitilityView.OnboardItemFragment">
+
+
+    <ImageView
+            android:src="@drawable/boardimage1"
+            android:layout_width="244dp"
+            android:layout_height="258dp"
+            android:id="@+id/baseimage" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.496"
+    />
+    <TextView
+            android:text="Get a list of nearby"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/text1" android:fontFamily="@font/poppinsregular" android:textColor="@color/black"
+            android:textSize="18dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/baseimage" app:layout_constraintHorizontal_bias="0.497"/>
+    <TextView
+            android:text="in just seconds."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/text3" android:fontFamily="@font/poppinsregular" android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintTop_toBottomOf="@+id/text2"
+    />
+    <TextView
+            android:text="experienced doctors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/text2" android:fontFamily="@font/poppinsregular" android:textColor="@color/primaryblue"
+            android:textSize="23dp"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintTop_toBottomOf="@+id/text1"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "445954899211",
+    "firebase_url": "https://myhmo-8975a.firebaseio.com",
+    "project_id": "myhmo-8975a",
+    "storage_bucket": "myhmo-8975a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445954899211:android:e10298f81d88b3ccf6760e",
+        "android_client_info": {
+          "package_name": "com.qucoon.myhmo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445954899211-38h4hn2hmn9cu74j8d1lcfono7np19dt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqEBLnLfyWjNQ_ejiXNtJfCf278QVt_Ac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445954899211-38h4hn2hmn9cu74j8d1lcfono7np19dt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

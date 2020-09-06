@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/home_menu"
+            android:enabled="true"
+            android:icon="@drawable/homeimage"
+            android:title="@string/home"/>
+
+    <item
+            android:id="@+id/search_menu"
+            android:enabled="true"
+            android:icon="@drawable/kit"
+            android:title="@string/search"/>  <item
+
+        android:id="@+id/profile_menu"
+        android:enabled="true"
+        android:icon="@drawable/settings"
+        android:title="@string/profile"/>
+</menu>

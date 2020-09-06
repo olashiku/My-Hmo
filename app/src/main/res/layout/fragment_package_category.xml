@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        tools:context=".views.fragment.outsidefragment.PackageCategoryFragment">
+
+    <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Please select a category from the list of options to proceed"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.qucoon.myhmo.views.fragment.UitilityView.itemview
+            android:id="@+id/itemview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:image="@drawable/silver"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/itemview2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:text="Pre-existing Condition"
+            app:text2="View Exposure" />
+
+    <com.qucoon.myhmo.views.fragment.UitilityView.itemview
+            android:id="@+id/itemview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:image="@drawable/gold"
+            app:layout_constraintEnd_toStartOf="@+id/itemview"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:text="Individual"
+            app:text2="View Exposure" />
+
+    <com.qucoon.myhmo.views.fragment.UitilityView.itemview
+            android:id="@+id/itemview3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:image="@drawable/bronze"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/itemview4"
+            app:layout_constraintTop_toBottomOf="@+id/itemview"
+            app:text="Family"
+            app:text2="View Exposure" />
+
+    <com.qucoon.myhmo.views.fragment.UitilityView.itemview
+            android:id="@+id/itemview4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:image="@drawable/platnum"
+            app:layout_constraintEnd_toStartOf="@+id/itemview3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemview2"
+            app:text="Business"
+            app:text2="View Exposure" />
+
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/subbutton"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Submit Details"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemview4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
