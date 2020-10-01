@@ -5,11 +5,13 @@ import android.text.Html
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.TypefaceSpan
+import com.example.neptune.utils.gone
 import com.example.neptune.utils.makeStatusBarTransparent
+import com.example.neptune.utils.show
 import com.qucoon.myhmo.R
 import com.qucoon.myhmo.views.fragment.insidefrgments.ApointmentFragment
 import com.qucoon.myhmo.views.fragment.insidefrgments.DashboardFragment
-import com.qucoon.myhmo.views.fragment.insidefrgments.ProfileFragment
+import com.qucoon.myhmo.views.fragment.insidefrgments.SettingsFragment
 import com.qucoon.royalexchange.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -36,9 +38,15 @@ class MainActivity : BaseActivity() {
 
      fun setActoonBarTitle(title:String){
          supportActionBar!!.title = Html.fromHtml("<font color='#ffffff'>$title</font>")
-
      }
 
+     fun hideTablayout(){
+         tabLayout.gone()
+     }
+
+     fun showTablayout(){
+         tabLayout.show()
+     }
 
 
     fun hideToolsBar(){
@@ -47,7 +55,7 @@ class MainActivity : BaseActivity() {
 
     fun initView(){
         supportActionBar!!.show()
-        val fragment = listOf(DashboardFragment(), ApointmentFragment(), ProfileFragment())
+        val fragment = listOf(DashboardFragment(), ApointmentFragment(), SettingsFragment())
         initFragNavController(this,fragment,"MAINACTIVITY",supportFragmentManager,R.id.content)
     }
 

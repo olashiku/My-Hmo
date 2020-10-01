@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="myarray">
+        <item>Monthly</item>
+        <item>Quaterly</item>
+        <item>Annually</item>
+    </string-array>
+</resources>

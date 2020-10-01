@@ -65,7 +65,6 @@ class LoginFragment : BaseFragment() {
 
         forgotpasswordButton.setOnClickListener {
            mFragmentNavigation.pushFragment(ForgotPasswordFragment())
-          //  mFragmentNavigation.openBottomSheet(SignoutBottomSheetDialogFragment())
         }
 
         submitButton.setOnClickListener {

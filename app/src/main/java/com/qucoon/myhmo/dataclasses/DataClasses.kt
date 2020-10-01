@@ -6,3 +6,5 @@ data class OnboardDataClass(val image:Int, val text1:String,val text2:String,val
 data class  DashboardData(val image:Int, val text1:String,val text2:String):Serializable
 data class MenuData(val image:Int,val title:String, val desc:String)
 data class SettingsClass(val name:String)
+data class HealthDataclasses(val image:Int, val name:String)
+data class ContactItemDataClass(val image:Int, val name:String)

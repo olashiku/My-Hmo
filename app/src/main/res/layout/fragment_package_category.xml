@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.qucoon.myhmo.views.fragment.UitilityView.itemview
+    <com.qucoon.myhmo.views.UitilityView.itemview
             android:id="@+id/itemview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
             app:text="Pre-existing Condition"
             app:text2="View Exposure" />
 
-    <com.qucoon.myhmo.views.fragment.UitilityView.itemview
+    <com.qucoon.myhmo.views.UitilityView.itemview
             android:id="@+id/itemview2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             app:text="Individual"
             app:text2="View Exposure" />
 
-    <com.qucoon.myhmo.views.fragment.UitilityView.itemview
+    <com.qucoon.myhmo.views.UitilityView.itemview
             android:id="@+id/itemview3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
             app:text="Family"
             app:text2="View Exposure" />
 
-    <com.qucoon.myhmo.views.fragment.UitilityView.itemview
+    <com.qucoon.myhmo.views.UitilityView.itemview
             android:id="@+id/itemview4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

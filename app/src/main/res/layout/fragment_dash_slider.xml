@@ -4,7 +4,7 @@
                                                    xmlns:tools="http://schemas.android.com/tools"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="wrap_content"
-                                                   tools:context=".views.fragment.UitilityView.DashSLiderFragment"
+                                                   tools:context=".views.UitilityView.DashSLiderFragment"
                                                    android:id="@+id/frameLayout">
 
     <androidx.cardview.widget.CardView android:layout_width="match_parent"

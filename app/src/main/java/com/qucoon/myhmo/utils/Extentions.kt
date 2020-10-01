@@ -263,7 +263,7 @@ fun DialogFragment.withArguments(vararg arguments: Pair<String, Serializable>): 
 }
 
 
-fun BottomSheetDialogFragment.withArguments(vararg arguments: Pair<String, Serializable>): DialogFragment {
+fun BottomSheetDialogFragment.withArguments(vararg arguments: Pair<String, Serializable>): BottomSheetDialogFragment {
     val bundle = Bundle()
     arguments.forEach { bundle.putSerializable(it.first, it.second) }
     this.arguments = bundle

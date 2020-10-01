@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/inside_background"
+        tools:context=".views.fragment.insidefrgments.dashoard.enrolment.SubCategoryFragment">
+
+
+    <Button
+            android:id="@+id/backButtonCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/icon_back_arrow"
+            android:drawablePadding="-35dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Back"
+            android:textAllCaps="false"
+            android:textColor="@color/primaryblue"
+            android:textSize="12sp"
+            app:iconTint="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="Select category"
+            android:textColor="@color/primaryColor"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/backButtonCategory"
+            app:layout_constraintTop_toBottomOf="@+id/backButtonCategory" />
+
+
+    <com.qucoon.myhmo.views.UitilityView.itemview
+            android:id="@+id/goldPackageButton"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:image="@drawable/goldstack"
+            app:layout_constraintEnd_toStartOf="@+id/platinumPackageButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11"
+            app:text="Gold"
+            app:text2="Individual" />
+
+    <com.qucoon.myhmo.views.UitilityView.itemview
+            android:id="@+id/platinumPackageButton"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:image="@drawable/platinumstack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/goldPackageButton"
+            app:layout_constraintTop_toBottomOf="@+id/textView11"
+            app:text="Platinum"
+            app:text2="Individual" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

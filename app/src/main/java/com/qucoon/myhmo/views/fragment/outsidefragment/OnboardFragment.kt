@@ -3,7 +3,6 @@ package com.qucoon.myhmo.views.fragment.outsidefragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,7 @@ import com.qucoon.myhmo.dataclasses.OnboardDataClass
 
 import com.qucoon.myhmo.R
 import com.qucoon.myhmo.views.activity.OutsideActivity
-import com.qucoon.myhmo.views.fragment.UitilityView.OnboardItemFragment
+import com.qucoon.myhmo.views.UitilityView.OnboardItemFragment
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import com.qucoon.royalexchange.utils.ViewPagerObject
 import com.qucoon.royalexchange.utils.setUpViewPager

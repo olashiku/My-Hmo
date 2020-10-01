@@ -62,7 +62,7 @@ class PackageFragment : BaseFragment() {
      }
 
     fun initView(){
-        (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Verification Code")
+      //  (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Verification Code")
 
         otp_view.setOtpCompletionListener {
             Log.v("PackageFragment","View Completed")
@@ -78,6 +78,8 @@ class PackageFragment : BaseFragment() {
                  showError("Insert OTP sent to your email")
              }
          }
+
+         backButtonOTP.setOnClickListener { mFragmentNavigation.popFragment() }
      }
 
      fun verifyEmail(){

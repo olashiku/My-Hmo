@@ -20,6 +20,14 @@
 
 
 
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="fontFamily">@font/poppinsregular</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+
     <style name="Theme.AppLib.ActionBar.Solid" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
         <item name="background">@color/primaryblue</item>
         <item name="titleTextStyle">@style/Theme.AppLib.ActionBar.TitleTextStyle</item>

@@ -73,6 +73,8 @@ interface OutsideRepository {
           paperPrefs.savePref(PaperPrefs.EMAIL,response.user.email)
           paperPrefs.savePref(PaperPrefs.PHONE,response.user.phone)
           paperPrefs.savePref(PaperPrefs.IMAGE,response.user.image)
+          paperPrefs.savePref(PaperPrefs.ENROLSTATUS,response.user.status)
+
 
 
       }

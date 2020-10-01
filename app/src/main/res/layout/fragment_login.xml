@@ -34,6 +34,8 @@
                 android:layout_marginTop="52dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Your email"
+                app:startIconDrawable="@drawable/icon_email"
+                app:startIconTint="@color/iconcolor"
                 android:textColorHint="@color/hint_selector"
                 app:boxStrokeColor="@color/stroke_selector"
                 app:hintTextColor="#694E5157"
@@ -61,6 +63,10 @@
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Your Password"
+                app:startIconDrawable="@drawable/icon_lock"
+                app:startIconTint="@color/iconcolor"
+                app:endIconTint="@color/iconcolor"
+                app:endIconMode="password_toggle"
                 android:textColorHint="@color/hint_selector"
                 app:boxStrokeColor="@color/stroke_selector"
                 app:hintTextColor="#694E5157"
@@ -74,6 +80,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppinsregular"
                     android:imeOptions="actionNext"
+
                     android:inputType="textPassword"
                     android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -98,11 +105,11 @@
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/createUserButton"
                 android:layout_width="0dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
 
-                android:layout_marginEnd="50dp"
+                android:layout_marginEnd="32dp"
                 android:layout_marginBottom="24dp"
                 android:fontFamily="@font/poppinsregular"
                 android:text="Create a Profile"

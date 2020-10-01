@@ -66,9 +66,14 @@ class SignupFragment : BaseFragment() {
              }
 
          }
+
+         backButton.setOnClickListener{
+             mFragmentNavigation.popFragment()
+         }
+
      }
 
      fun initView(){
-         (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Personal Details")
+      //   (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Personal Details")
      }
 }

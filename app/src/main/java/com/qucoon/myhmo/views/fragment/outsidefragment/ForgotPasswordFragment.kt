@@ -65,10 +65,14 @@ class ForgotPasswordFragment : BaseFragment() {
             }
 
         }
+
+        backButtonForgotPassword.setOnClickListener {
+            mFragmentNavigation.popFragment()
+        }
     }
 
     fun initView(){
-        (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Reset Password")
+      //  (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Reset Password")
     }
 
 }

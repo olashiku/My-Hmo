@@ -30,6 +30,7 @@ class PaperPrefs {
         val LONGITUDE = "g6S"
         val IMAGE = "g7s"
         val PUSHID="push"
+        val ENROLSTATUS="Enrolstatus"
  }
     private  var context: Context
     private fun getStringFromPref(key:String):String{

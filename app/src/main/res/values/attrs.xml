@@ -4,6 +4,5 @@
         <attr name="image" format="reference"/>
         <attr name="text" format="string"/>
         <attr name="text2" format="string"/>
-
     </declare-styleable>
 </resources>

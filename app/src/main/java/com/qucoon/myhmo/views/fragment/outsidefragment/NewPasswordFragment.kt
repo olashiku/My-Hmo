@@ -68,7 +68,7 @@ class NewPasswordFragment : BaseFragment() {
      }
 
      fun initView(){
-         (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("New Password")
+      //   (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("New Password")
 
      }
 
@@ -82,6 +82,8 @@ class NewPasswordFragment : BaseFragment() {
              }
 
          }
+
+         backButtonConfirmPassword2.setOnClickListener { mFragmentNavigation.popFragment() }
      }
 
 

@@ -135,15 +135,18 @@ dependencies {
 
     implementation 'com.pnikosis:materialish-progress:1.7'
 
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.1'
     implementation 'com.agrawalsuneet.androidlibs:loaderspack:1.2.3'
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
+    implementation 'com.github.freshdesk:freshchat-android:3.6.5'
 
+    implementation 'com.github.dueeeke:dk-tablayout:1.0.2'
 
-
-
-
+    implementation 'com.github.RobertApikyan:SegmentedControl:1.2.0'
+    implementation 'com.mikhaellopez:circularimageview:4.2.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 }

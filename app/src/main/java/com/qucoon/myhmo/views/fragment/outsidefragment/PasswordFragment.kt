@@ -70,6 +70,8 @@ class PasswordFragment : BaseFragment() {
              }
 
          }
+
+         backButtonConfirmPassword.setOnClickListener { mFragmentNavigation.popFragment() }
      }
 
      fun generateAuthToken(){
@@ -90,7 +92,7 @@ class PasswordFragment : BaseFragment() {
      }
 
     fun initView(){
-        (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Create Password")
+      // (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Create Password")
     }
 
 }

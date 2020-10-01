@@ -9,5 +9,6 @@ data class User(
     val latitude: String,
     val longitude: String,
     val phone: String,
-    val userid: Int
+    val userid: Int,
+    val status:String
 )

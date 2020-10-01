@@ -18,6 +18,7 @@ class MyCustomApp: MultiDexApplication(){
             androidContext(this@MyCustomApp)
             modules(listOf(repoModule, viewModelModule,
                 databaseModule, networkModule))
+
         }
     }
 }

@@ -2,24 +2,15 @@ package com.qucoon.myhmo.views.fragment.insidefrgments
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.viewpager.widget.ViewPager
-import com.qucoon.myhmo.dataclasses.DashboardData
-import com.qucoon.myhmo.dataclasses.MenuData
+import android.widget.Toast
 
 import com.qucoon.myhmo.R
 import com.qucoon.myhmo.views.activity.MainActivity
-import com.qucoon.myhmo.views.activity.OutsideActivity
-import com.qucoon.myhmo.views.fragment.UitilityView.DashSLiderFragment
+import com.qucoon.myhmo.views.fragment.insidefrgments.dashoard.enrolment.PackageFragment
 import com.qucoon.royalexchange.ui.base.BaseFragment
-import com.qucoon.royalexchange.utils.ViewPagerObject
-import com.qucoon.royalexchange.utils.setUpViewPager
-import com.qucoon.royalexchange.utils.updateRecycler
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 
@@ -36,9 +27,26 @@ class DashboardFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initOnClick()
     }
+    
+     fun initOnClick(){
+
+         enrolButton.setOnClickListener {
+             mFragmentNavigation.pushFragment(PackageFragment())
+         }
+         consultDoctorButton.setOnClickListener {
+             Toast.makeText(context,"i have been clicked1", Toast.LENGTH_SHORT).show()
+         }
+
+         talkToSuppotButton.setOnClickListener {
+             Toast.makeText(context,"i have been clicked2", Toast.LENGTH_SHORT).show()
+         }
+     }
 
     fun initView(){
+        (activity as MainActivity).showTablayout()
+        (activity as MainActivity).hideToolsBar()
 
     }
 

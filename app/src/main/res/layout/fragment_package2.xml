@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/inside_background"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".views.fragment.insidefrgments.dashoard.enrolment.PackageFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        <Button
+                android:id="@+id/backButtonPackage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@null"
+                android:drawableLeft="@drawable/icon_back_arrow"
+                android:drawablePadding="-35dp"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Back"
+                android:textAllCaps="false"
+                android:textColor="@color/primaryblue"
+                android:textSize="12sp"
+                app:iconTint="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:fontFamily="@font/poppinsmedium"
+                android:text="Select Package"
+                android:textColor="@color/primaryColor"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/backButtonPackage"
+                app:layout_constraintTop_toBottomOf="@+id/backButtonPackage" />
+
+
+        <com.qucoon.myhmo.views.UitilityView.customview
+                android:id="@+id/individualButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                app:image="@drawable/individualicon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:text="Individual"
+                app:text2="Apply as an individual Customer" />
+
+
+        <com.qucoon.myhmo.views.UitilityView.customview
+                android:id="@+id/familyButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                app:image="@drawable/familyimage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/individualButton"
+                app:text="Family"
+                app:text2="Enrol your family on myhmo" />
+
+
+        <com.qucoon.myhmo.views.UitilityView.customview
+                android:id="@+id/corporateButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                app:image="@drawable/corporateimage"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/familyButton"
+                app:text="Corporate"
+                app:text2="Register your company for HMO service" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

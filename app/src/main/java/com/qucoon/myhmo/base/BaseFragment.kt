@@ -10,11 +10,10 @@ import com.example.neptune.viewmodel.BaseViewModel
 import com.example.neptune.viewmodel.observeChange
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.qucoon.myhmo.database.PaperPrefs
-import com.qucoon.myhmo.views.fragment.UitilityView.ViewDialog
+import com.qucoon.myhmo.views.UitilityView.ViewDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import org.koin.android.ext.android.inject
 
 import kotlin.coroutines.CoroutineContext
 

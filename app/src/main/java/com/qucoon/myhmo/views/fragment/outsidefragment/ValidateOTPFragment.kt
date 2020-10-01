@@ -51,7 +51,7 @@ class ValidateOTPFragment : BaseFragment() {
     }
 
     fun initView(){
-        (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Verification Code")
+    //    (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Verification Code")
     }
     fun initOnClick(){
         validOtpNextButton.setOnClickListener{
@@ -61,10 +61,10 @@ class ValidateOTPFragment : BaseFragment() {
             }else {
                 showError("Insert OTP sent to your email")
             }
-
-
-
         }
+
+        backButtonOTP1.setOnClickListener { mFragmentNavigation.popFragment() }
+
     }
 
      fun authPassword(){
