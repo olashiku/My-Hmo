@@ -35,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/tvTitleDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"
@@ -58,10 +58,25 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleDetails"
                 app:text="Individual"
                 app:text2="Apply as an individual Customer" />
 
+
+        <com.qucoon.myhmo.views.UitilityView.customview
+                android:id="@+id/groupButton"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                app:image="@drawable/groupicon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/individualButton"
+                app:text="Group"
+                app:text2="Enrol your teammates on MYHMO." />
 
         <com.qucoon.myhmo.views.UitilityView.customview
                 android:id="@+id/familyButton"
@@ -74,10 +89,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/individualButton"
+                app:layout_constraintTop_toBottomOf="@+id/groupButton"
                 app:text="Family"
                 app:text2="Enrol your family on myhmo" />
-
 
         <com.qucoon.myhmo.views.UitilityView.customview
                 android:id="@+id/corporateButton"
@@ -93,6 +107,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/familyButton"
+                app:layout_constraintVertical_bias="0.0"
                 app:text="Corporate"
                 app:text2="Register your company for HMO service" />
 

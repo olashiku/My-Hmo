@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/frameLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.fragment.outsidefragment.SuccessFragment">
+
+
+    <com.agrawalsuneet.loaderspack.loaders.MultipleRippleLoader
+            android:id="@+id/multipleRippleLoader"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:multipleripple_animDuration="2000"
+            app:multipleripple_circleColor="@color/green"
+            app:multipleripple_circleInitialRadius="70dp"
+            app:multipleripple_fromAlpha="0.2"
+            app:multipleripple_interpolator="@android:anim/decelerate_interpolator"
+            app:multipleripple_noOfRipples="4"
+            app:multipleripple_toAplha="0.1" />
+
+    <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/correcticon"
+            app:layout_constraintBottom_toBottomOf="@+id/multipleRippleLoader"
+            app:layout_constraintEnd_toEndOf="@+id/multipleRippleLoader"
+            app:layout_constraintStart_toStartOf="@+id/multipleRippleLoader"
+            app:layout_constraintTop_toTopOf="@+id/multipleRippleLoader" />
+
+    <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Account Creation Successfully"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/multipleRippleLoader"
+            app:layout_constraintStart_toStartOf="@+id/multipleRippleLoader"
+            app:layout_constraintTop_toBottomOf="@+id/multipleRippleLoader" />
+
+    <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppinslight"
+            android:text="Your account has been successfully created, please click continue to login to your account."
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/multipleRippleLoader"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/multipleRippleLoader"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/createUserButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:backgroundTint="@color/green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

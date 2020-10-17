@@ -31,6 +31,7 @@ class PaperPrefs {
         val IMAGE = "g7s"
         val PUSHID="push"
         val ENROLSTATUS="Enrolstatus"
+        val USERID= "UserID"
  }
     private  var context: Context
     private fun getStringFromPref(key:String):String{

@@ -184,7 +184,7 @@
                     android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
                 android:id="@+id/signupSumitButton"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -192,7 +192,7 @@
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="16dp"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/item_curve_edges_blue_fill"
                 android:fontFamily="@font/poppinsregular"
                 android:text="Next"
                 android:textAllCaps="false"

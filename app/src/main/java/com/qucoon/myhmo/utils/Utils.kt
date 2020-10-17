@@ -12,11 +12,17 @@ import android.widget.Toast
 
 object Utils {
 
+
+
     fun delaytime(time:Long, myCallback: () -> Unit){
         Handler().postDelayed({
     myCallback.invoke()
         },time)
     }
+
+
+
+
 
     fun setStatusBarColor(activity: Activity, colorcode:String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

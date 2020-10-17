@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Rect
-import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -14,7 +13,6 @@ import android.text.TextWatcher
 import android.util.Patterns
 import android.view.View
 import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
@@ -29,13 +27,13 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
 import com.thetechnocafe.gurleensethi.liteutils.RecyclerAdapterUtil
+import java.io.Serializable
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import java.io.Serializable
 
 
-fun delayFor(millseconds:Long,action:() -> Unit ){
+fun delayFor(millseconds: Long, action: () -> Unit){
     Handler().postDelayed({
         action()
     }, millseconds)
@@ -43,34 +41,42 @@ fun delayFor(millseconds:Long,action:() -> Unit ){
 
 
 
-fun <T:Any> RecyclerView.updateRecyclerNew(itemDecoration: GridSpacingItemDecoration, context: Context, listOfItems:List<T>, layout:Int, listOfLayout:List<Int>, binder: (Map<Int, View>, Int) -> Unit, onClickPosition:(Int) -> Unit): RecyclerView.Adapter<*>? {
-    this.layoutManager = GridLayoutManager(context,3)
+fun <T : Any> RecyclerView.updateRecyclerNew(
+    itemDecoration: GridSpacingItemDecoration,
+    context: Context,
+    listOfItems: List<T>,
+    layout: Int,
+    listOfLayout: List<Int>,
+    binder: (Map<Int, View>, Int) -> Unit,
+    onClickPosition: (Int) -> Unit
+): RecyclerView.Adapter<*>? {
+    this.layoutManager = GridLayoutManager(context, 3)
     this.addItemDecoration(itemDecoration)
-    val reyclerAdaptor = RecyclerAdapterUtil<T>(context,listOfItems,layout)
+    val reyclerAdaptor = RecyclerAdapterUtil<T>(context, listOfItems, layout)
     reyclerAdaptor.addViewsList(listOfLayout)
-    reyclerAdaptor.addOnDataBindListener{itemView, item, position, innerViews ->
-        binder(innerViews,position)
+    reyclerAdaptor.addOnDataBindListener{ itemView, item, position, innerViews ->
+        binder(innerViews, position)
     }
     reyclerAdaptor.addOnClickListener { item, position -> onClickPosition(position) }
     this.adapter = reyclerAdaptor
     return adapter
 }
 
-fun formatDouble(string:String):Pair<Boolean,Any>{
+fun formatDouble(string: String):Pair<Boolean, Any>{
     return string.toDoublee()
 }
 
 
 
-fun String.toDoublee():Pair<Boolean,Any>{
+fun String.toDoublee():Pair<Boolean, Any>{
     return if(this.trim().toDoubleOrNull() == null){
-        Pair(false,this)
+        Pair(false, this)
     }else{
-        Pair(true,this.trim().toDouble())
+        Pair(true, this.trim().toDouble())
     }
 }
 
-fun ImageView.loadImage(fullImageUrl: String, defaultImage:Int, view: Fragment) {
+fun ImageView.loadImage(fullImageUrl: String, defaultImage: Int, view: Fragment) {
     Glide.with(view)
         .load(fullImageUrl)
         .placeholder(defaultImage)
@@ -110,7 +116,7 @@ fun String.capitalizeWords(): String = split(" ").joinToString(" ") { it.toLower
 fun String.formatNumber():String{
     return try {
         "${Constants.NAIRA}${DecimalFormat("#,##0.00").format(java.lang.Double.parseDouble(this))}"
-    } catch (ex:Exception){
+    } catch (ex: Exception){
         return "${Constants.NAIRA}0"
     }
 }
@@ -118,6 +124,8 @@ fun String.formatNumber():String{
 fun String.stripAmount():String{
     return this.toString().replace("[$,£N₦]".toRegex(), "")
 }
+
+
 
 fun TextInputEditText.stripAmount():String{
     return this.text.toString().replace("[$,£N₦]".toRegex(), "")
@@ -172,7 +180,7 @@ fun String.isEmpty():Boolean{
 }
 
 
-fun String.toDate(orginalFormat:String): Date {
+fun String.toDate(orginalFormat: String): Date {
     val originalFormat = SimpleDateFormat(orginalFormat)
     val date = originalFormat.parse(this)
     // val targetFormat = SimpleDateFormat("dd MMM yy")
@@ -183,7 +191,7 @@ fun String.toDate(orginalFormat:String): Date {
 fun Float.formatNumber():String{
     return try {
         "₦${DecimalFormat("#,##0.00").format(this.toDouble())}"
-    }catch (ex:java.lang.Exception){
+    }catch (ex: java.lang.Exception){
         "₦0.0"
     }
 }
@@ -215,14 +223,14 @@ fun Activity.makeStatusBarTransparent() {
 
 
 fun TextInputEditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-    this.addTextChangedListener(object: TextWatcher {
+    this.addTextChangedListener(object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {
             afterTextChanged.invoke(s.toString())
         }
 
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { }
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
     })
 }
 
@@ -235,14 +243,14 @@ fun EditText.validate(message: String, validator: (String) -> Boolean) {
 
 
 fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-    this.addTextChangedListener(object: TextWatcher {
+    this.addTextChangedListener(object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {
             afterTextChanged.invoke(s.toString())
         }
 
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { }
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
     })
 }
 
@@ -318,12 +326,19 @@ fun <T : Any> DialogFragment.argument(key: String, defaultValue: T? = null) = la
 }
 
 
-fun <T:Any> RecyclerView.updateRecycler(context: Context, listOfItems:List<T>, layout:Int, listOfLayout:List<Int>, binder: (Map<Int, View>, Int) -> Unit, onClickPosition:(Int) -> Unit): RecyclerView.Adapter<*>? {
+fun <T : Any> RecyclerView.updateRecycler(
+    context: Context,
+    listOfItems: List<T>,
+    layout: Int,
+    listOfLayout: List<Int>,
+    binder: (Map<Int, View>, Int) -> Unit,
+    onClickPosition: (Int) -> Unit
+): RecyclerView.Adapter<*>? {
     this.layoutManager = LinearLayoutManager(context)
-    val reyclerAdaptor = RecyclerAdapterUtil<T>(context,listOfItems,layout)
+    val reyclerAdaptor = RecyclerAdapterUtil<T>(context, listOfItems, layout)
     reyclerAdaptor.addViewsList(listOfLayout)
-    reyclerAdaptor.addOnDataBindListener{itemView, item, position, innerViews ->
-        binder(innerViews,position)
+    reyclerAdaptor.addOnDataBindListener{ itemView, item, position, innerViews ->
+        binder(innerViews, position)
     }
     reyclerAdaptor.addOnClickListener { item, position -> onClickPosition(position) }
     this.adapter = reyclerAdaptor
@@ -331,7 +346,7 @@ fun <T:Any> RecyclerView.updateRecycler(context: Context, listOfItems:List<T>, l
 }
 
 
-fun Bitmap.resizeByWidth(width:Int):Bitmap{
+fun Bitmap.resizeByWidth(width: Int):Bitmap{
     val ratio:Float = this.width.toFloat() / this.height.toFloat()
     val height:Int = Math.round(width / ratio)
 
@@ -343,7 +358,7 @@ fun Bitmap.resizeByWidth(width:Int):Bitmap{
     )
 }
 
-fun Bitmap.resizeByHeight(height:Int):Bitmap{
+fun Bitmap.resizeByHeight(height: Int):Bitmap{
     val ratio:Float = this.height.toFloat() / this.width.toFloat()
     val width:Int = Math.round(height / ratio)
 

@@ -39,6 +39,8 @@ class Validator {
         private val USERNAME_VALIDATION_MSG = "Enter a valid username"
         private val ACCOUNT_NUMBER_VALIDATION_MESSAGE = "Enter 10 digit account number"
         private val PASSWORD_NUMBER_VALIDATION_MESSAGE = "Enter 6 digit account number"
+        private val NUMBER_VALIDATION_MSG = "Enter a valid Number"
+
 
 
         /**
@@ -187,6 +189,19 @@ class Validator {
             // Set error if required
             if (updateUI) {
                 val error: String? = if (valid) null else PHONE_VALIDATION_MSG
+                setError(data, error)
+            }
+
+            return valid
+        }
+
+        fun isValidNumber(data: Any, updateUI: Boolean = true): Boolean {
+            val str = getText(data)
+            val valid = str.trim().isNotEmpty()
+
+            // Set error if required
+            if (updateUI) {
+                val error: String? = if (valid) null else NUMBER_VALIDATION_MSG
                 setError(data, error)
             }
 

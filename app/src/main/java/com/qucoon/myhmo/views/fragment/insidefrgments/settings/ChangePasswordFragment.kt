@@ -48,6 +48,10 @@ class ChangePasswordFragment : BaseFragment(),SingleButtonBottomSheetDialogFragm
 
     fun initOnClick(){
 
+        backButtonChangePassword.setOnClickListener {
+            mFragmentNavigation.popFragment()
+        }
+
         changePasswordSumitButton.setOnClickListener {
             if(Validator.isValidPassword2(etOldPassword) &&  Validator.isValidPassword2(etNewPassword1)
                 && Validator.isValidPassword2(etNewPassword2) && Utils.checkpinmatch(etNewPassword1,etNewPassword2,context!!)){

@@ -1,5 +1,6 @@
 package com.qucoon.myhmo.APIs
 
+import com.nubis.watchguard.utils.UseCaseResult
 import com.qucoon.myhmo.model.request.newpasswordReset.NewpasswordResetRequest
 import com.qucoon.myhmo.model.request.authemail.AuthemailRequest
 import com.qucoon.myhmo.model.request.authenticatepassword.AuthenticatePasswordRequest
@@ -16,6 +17,12 @@ import com.qucoon.myhmo.model.response.login.LoginResponse
 import com.qucoon.myhmo.model.response.newpasswordReset.NewPasswordResetResponse
 import com.qucoon.myhmo.model.response.resetpassword.ResetPasswordResponse
 import com.qucoon.myhmo.model.request.changepassword.ChangePasswordRequest
+import com.qucoon.myhmo.model.request.confirmpaystack.PaystackConfirmationRequest
+import com.qucoon.myhmo.model.request.enroluser.EnroluserRequest
+import com.qucoon.myhmo.model.request.initpaystack.InitpaymentRequest
+import com.qucoon.myhmo.model.response.confirmpaystack.PaystackConfirmationResponse
+import com.qucoon.myhmo.model.response.enroluser.EnroluserResponse
+import com.qucoon.myhmo.model.response.initpayment.InitpaymentResponse
 
 import kotlinx.coroutines.Deferred
 import retrofit2.http.Body
@@ -46,5 +53,14 @@ interface HmoAPI {
 
    @POST("changepassword")
     fun changePassword(@Body params:ChangePasswordRequest): Deferred<ChangePasswordResponse>
+
+     @POST("initpayment")
+     fun initPaystack(@Body params: InitpaymentRequest): Deferred<InitpaymentResponse>
+
+    @POST("confirmpayment")
+    fun confirmpayment(@Body params: PaystackConfirmationRequest): Deferred<PaystackConfirmationResponse>
+
+    @POST("enroluser")
+    fun enrolusers(@Body params: EnroluserRequest): Deferred<EnroluserResponse>
 
 }

@@ -27,6 +27,7 @@ import com.qucoon.myhmo.views.fragment.insidefrgments.settings.ManageAccountFrag
 import com.qucoon.myhmo.views.fragment.insidefrgments.dashoard.EnrolUserFragment
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_profile2.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,6 +59,10 @@ class SettingsFragment : BaseFragment() {
          (activity as MainActivity).showTablayout()
          (activity as MainActivity).setActoonBarTitle("Settings")
 
+         AccoutSettingRecycler.setNestedScrollingEnabled(false);
+         AppSettingsRecycler.setNestedScrollingEnabled(false);
+         AboutUsRecycler.setNestedScrollingEnabled(false);
+
 
 
          val list1 = listOf<SettingsClass>(
@@ -66,13 +71,17 @@ class SettingsFragment : BaseFragment() {
              SettingsClass("Log Out")
          )
 
-         AccoutSettingRecycler.updateRecycler(context!!, list1, R.layout.settings_text_layout, listOf(R.id.Name, R.id.itemSwitch),
+         AccoutSettingRecycler.updateRecycler(context!!, list1, R.layout.settings_text_layout, listOf(R.id.Name, R.id.itemSwitch,R.id.myview),
              { innerViews, position ->
                  val name = innerViews[R.id.Name] as TextView
                  val switch = innerViews[R.id.itemSwitch] as SwitchMaterial
                  switch.gone()
 
                  name.setText(list1[position].name)
+
+//                 if(position == 2){
+//                     view!!.gone()
+//                 }
              },
              { position ->
                  val item = list1[position]
@@ -90,13 +99,19 @@ class SettingsFragment : BaseFragment() {
              SettingsClass("Show Cycle Planner"),
              SettingsClass("Allow push Notification"))
 
-         AppSettingsRecycler.updateRecycler(context!!, list2, R.layout.settings_text_layout, listOf(R.id.Name, R.id.itemSwitch,R.id.contraintLayout),
+         AppSettingsRecycler.updateRecycler(context!!, list2, R.layout.settings_text_layout, listOf(R.id.Name, R.id.itemSwitch,R.id.contraintLayout,R.id.myview),
              { innerViews, position ->
                  val name = innerViews[R.id.Name] as TextView
                  val switch = innerViews[R.id.itemSwitch] as SwitchMaterial
                  val contraintLayout = innerViews[R.id.contraintLayout] as ConstraintLayout
+                 val view = innerViews[R.id.myview] as View
+
 
                  name.setText(list2[position].name)
+
+//                 if(position == 1){
+//                     view.gone()
+//                 }
 
                  contraintLayout.setBackgroundResource(0);
 
@@ -115,15 +130,20 @@ class SettingsFragment : BaseFragment() {
              SettingsClass("Talk To Support"),
              SettingsClass("Contact Us"))
 
-         AboutUsRecycler.updateRecycler(context!!, list3, R.layout.settings_text_layout, listOf(R.id.Name, R.id.itemSwitch,R.id.contraintLayout),
+         AboutUsRecycler.updateRecycler(context!!, list3, R.layout.settings_text_layout, listOf(R.id.Name, R.id.itemSwitch,R.id.contraintLayout,R.id.myview),
              { innerViews, position ->
                  val name = innerViews[R.id.Name] as TextView
                  val switch = innerViews[R.id.itemSwitch] as SwitchMaterial
+                 val view = innerViews[R.id.myview] as View
+
                  val contraintLayout = innerViews[R.id.contraintLayout] as ConstraintLayout
                  switch.gone()
 
-
                  name.setText(list3[position].name)
+
+//                  if(position == 1){
+//                      view.gone()
+//                  }
              },
              { position ->
                  val item = list3[position]
@@ -136,12 +156,8 @@ class SettingsFragment : BaseFragment() {
 
 
      fun manageAccount(){
-         if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
-             mFragmentNavigation.pushFragment(EnrolUserFragment())
-         } else {
-             mFragmentNavigation.pushFragment(ManageAccountFragment())
 
-         }
+        mFragmentNavigation.pushFragment(ManageAccountFragment())
 
      }
     fun gotoSupportChart(){

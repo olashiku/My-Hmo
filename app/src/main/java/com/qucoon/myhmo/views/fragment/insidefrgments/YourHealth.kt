@@ -16,6 +16,7 @@ import com.qucoon.myhmo.R
 import com.qucoon.myhmo.dataclasses.HealthDataclasses
 import com.qucoon.myhmo.popups.utilitypupups.SignoutBottomSheetDialogFragment
 import com.qucoon.myhmo.views.activity.MainActivity
+import com.qucoon.myhmo.views.fragment.insidefrgments.YourHealth.*
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_apointment.*
 
@@ -41,42 +42,45 @@ class ApointmentFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initOnClick()
     }
+
+     fun initOnClick(){
+
+         myProfileButton.setOnClickListener {
+             mFragmentNavigation.pushFragment(ProfileFragment())
+         }
+
+         healthtipsButton.setOnClickListener {
+             mFragmentNavigation.pushFragment(HealthTipsFragment())
+         }
+
+         consultDoctorButtonn.setOnClickListener {
+             mFragmentNavigation.pushFragment(ConsultDoctorFragment())
+         }
+
+         accessSecondaryCareButton.setOnClickListener {
+             mFragmentNavigation.pushFragment(SecondaryCareFragment())
+         }
+
+         viewHospitalButton.setOnClickListener {
+             mFragmentNavigation.pushFragment(HospitalFragment())
+         }
+
+         viewExposirelist.setOnClickListener {
+            mFragmentNavigation.pushFragment(ExposirelistFragment())
+         }
+
+
+
+     }
 
     fun initView(){
 
         (activity as MainActivity).showTablayout()
 
 
-        val list = listOf<HealthDataclasses>(
-            HealthDataclasses(R.drawable.userimage,"View My Profile"),
-            HealthDataclasses(R.drawable.healthtipsimage,"Read  Health Tips"),
-            HealthDataclasses(R.drawable.doctorimage,"Consult a Doctor"),
-            HealthDataclasses(R.drawable.secondarycareimage,"Access Secondary Care"),
-            HealthDataclasses(R.drawable.hospitallistimage,"View Hospital List"),
-            HealthDataclasses(R.drawable.benefitimage,"View Exposure List"))
 
-
-        HealthRecycler.updateRecycler(context!!, list, R.layout.health_text_layout, listOf(R.id.Name, R.id.image),
-            { innerViews, position ->
-                val name = innerViews[R.id.Name] as TextView
-                val image = innerViews[R.id.image] as ImageView
-                name.setText(list[position].name)
-                image.setImageResource(list[position].image)
-
-            },
-            { position ->
-                val item = list[position]
-                when(position){
-                    0 ->{ }
-                    1 ->{ }
-                    2 ->{ }
-                    3 ->{ }
-                    4 ->{ }
-                    5 ->{ }
-
-                }
-            })
 
     }
 

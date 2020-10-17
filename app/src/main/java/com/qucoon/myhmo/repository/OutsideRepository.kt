@@ -43,7 +43,6 @@ interface OutsideRepository {
 
       override suspend fun registeruser(registerRequest: RegisterRequest): UseCaseResult<RegisterResponse> {
           return safeApiCall(registerRequest,hmoAPI::register, { response ->response.responsecode == "00"})
-
       }
 
       override suspend fun authEmail(authemailRequest: AuthemailRequest): UseCaseResult<AuthemailResponse> {
@@ -74,6 +73,7 @@ interface OutsideRepository {
           paperPrefs.savePref(PaperPrefs.PHONE,response.user.phone)
           paperPrefs.savePref(PaperPrefs.IMAGE,response.user.image)
           paperPrefs.savePref(PaperPrefs.ENROLSTATUS,response.user.status)
+          paperPrefs.savePref(PaperPrefs.USERID,response.user.userid.toString())
 
 
 
