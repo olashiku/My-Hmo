@@ -8,6 +8,7 @@ import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Parcelable
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
@@ -31,6 +32,7 @@ import java.io.Serializable
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 fun delayFor(millseconds: Long, action: () -> Unit){
@@ -263,6 +265,9 @@ fun Fragment.withArguments(vararg arguments: Pair<String, Serializable>): Fragme
 }
 
 
+
+
+
 fun DialogFragment.withArguments(vararg arguments: Pair<String, Serializable>): DialogFragment {
     val bundle = Bundle()
     arguments.forEach { bundle.putSerializable(it.first, it.second) }
@@ -280,6 +285,10 @@ fun BottomSheetDialogFragment.withArguments(vararg arguments: Pair<String, Seria
 
 fun View.gone(){
     this.visibility = View.GONE
+}
+
+fun EditText.clear(){
+    this.text.clear()
 }
 
 fun View.invisible(){
@@ -341,6 +350,7 @@ fun <T : Any> RecyclerView.updateRecycler(
         binder(innerViews, position)
     }
     reyclerAdaptor.addOnClickListener { item, position -> onClickPosition(position) }
+    reyclerAdaptor.notifyDataSetChanged()
     this.adapter = reyclerAdaptor
     return adapter
 }

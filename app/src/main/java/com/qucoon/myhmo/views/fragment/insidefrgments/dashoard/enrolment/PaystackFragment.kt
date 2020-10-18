@@ -45,6 +45,8 @@ class PaystackFragment : BaseFragment() {
     val subtype:String by argument("subtype")
     val reference:String by argument("reference")
     val schedulapayment:String by argument("schedulapayment")
+    val subscriber_info:List<BeneficiaryDetails> by argument("subscriber_info")
+
 
 
 
@@ -78,7 +80,7 @@ class PaystackFragment : BaseFragment() {
         dashboardViewModel.paystackConfirmationResponse.observe(viewLifecycleOwner, Observer {
 
             dashboardViewModel.enrolusers(amount.stripAmount().replace(".00","00"),type,duration,schedulapayment,
-                subscriber,subtype,type )
+                subscriber,subtype,type,subscriber_info)
 
         })
 
@@ -87,8 +89,7 @@ class PaystackFragment : BaseFragment() {
                      mFragmentNavigation.pushFragment(InsideSuccessFragment().withArguments(
                         "title" to "Successful",
                         "message" to "You have successfully enroled on MYHMO, Please check ${paperPrefs.getStringPref(PaperPrefs.EMAIL)} to validate your subscription." +
-                                " You can now contact the doctor on MYHMO."
-                    ))
+                                " You can now contact the doctor on MYHMO."))
         })
 
     }

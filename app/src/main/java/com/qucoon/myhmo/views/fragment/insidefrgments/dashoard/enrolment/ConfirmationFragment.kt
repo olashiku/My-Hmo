@@ -18,17 +18,9 @@ import kotlinx.android.synthetic.main.fragment_category_display.*
 import kotlinx.android.synthetic.main.fragment_confirmation.*
 import kotlinx.android.synthetic.main.fragment_confirmation.submitButton
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.io.Serializable
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ConfirmationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ConfirmationFragment : BaseFragment(),AutomateRequestDialogFragment.AutomateDialogCallback {
 
 
@@ -38,8 +30,10 @@ class ConfirmationFragment : BaseFragment(),AutomateRequestDialogFragment.Automa
     val amount:String  by argument("amount")
     val type:String by argument("type")
     val subtype:String by argument("subtype")
+    val subscriber_info:List<BeneficiaryDetails> by argument("subscriber_info")
 
-     var schedulapayment ="N"
+
+    var schedulapayment ="N"
 
 
     lateinit var  calculatedAMount:String
@@ -87,14 +81,17 @@ class ConfirmationFragment : BaseFragment(),AutomateRequestDialogFragment.Automa
                  "type" to type,
                  "subtype" to subtype,
                  "reference" to it.result.reference,
-                 "schedulapayment" to schedulapayment
+                 "schedulapayment" to schedulapayment,
+                 "subscriber_info" to  subscriber_info as Serializable))
 
-             ))
          })
 
      }
 
      fun initView(){
+
+
+
          tvPackageType.setText("${packagee.capitalize()} ${subtype.capitalize()}")
          tvDuration.setText(duration)
          tvSubscriber.setText(subscriber)

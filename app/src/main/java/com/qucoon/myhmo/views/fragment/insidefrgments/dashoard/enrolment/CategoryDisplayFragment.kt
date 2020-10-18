@@ -15,6 +15,8 @@ import com.example.neptune.utils.withArguments
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.qucoon.myhmo.R
+import com.qucoon.myhmo.database.PaperPrefs
+import com.qucoon.myhmo.database.getStringPref
 import com.qucoon.nibbs.utils.Validator
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_category_display.*
@@ -22,6 +24,7 @@ import kotlinx.android.synthetic.main.fragment_category_display.submitButton
 import kotlinx.android.synthetic.main.fragment_category_display.tvTitleDetails
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_profile2.*
+import java.io.Serializable
 import java.text.FieldPosition
 
 
@@ -39,6 +42,9 @@ class CategoryDisplayFragment : BaseFragment() {
 
     val type:String by argument("type")
     val subtype:String by argument("subtype")
+
+    var beneficiarylist: MutableList<BeneficiaryDetails> = mutableListOf()
+
 
     lateinit var  duration:String
 
@@ -138,15 +144,48 @@ class CategoryDisplayFragment : BaseFragment() {
          submitButton.setOnClickListener {
 
             if(Validator.isValidNumber(etNumberOfPeople)){
-                mFragmentNavigation.pushFragment(ConfirmationFragment().withArguments(
-                    "package" to type,
-                    "duration" to duration,
-                    "subscriber" to Utils.getTetxt(etNumberOfPeople),
-                    "amount" to  etAmount.text.toString(),
-                    "type" to type,
-                    "subtype" to subtype
 
-                ))
+                if(Utils.getTetxt(etNumberOfPeople).toInt()== 1){
+                    beneficiarylist.add(BeneficiaryDetails(paperPrefs.getStringPref(PaperPrefs.FIRSTNAME),paperPrefs.getStringPref(
+                        PaperPrefs.LASTNAME),paperPrefs.getStringPref(PaperPrefs.EMAIL), paperPrefs.getStringPref(PaperPrefs.PHONE),"Y"))
+
+
+                    mFragmentNavigation.pushFragment(ConfirmationFragment().withArguments(
+                        "package" to type,
+                        "duration" to duration,
+                        "subscriber" to Utils.getTetxt(etNumberOfPeople),
+                        "amount" to  etAmount.text.toString(),
+                        "type" to type,
+                        "subtype" to subtype,
+                        "subscriber_info" to beneficiarylist.toList() as Serializable ))
+                }else {
+
+                    mFragmentNavigation.pushFragment(BeneficiaryEntry().withArguments(
+                        "package" to type,
+                        "duration" to duration,
+                        "subscriber" to Utils.getTetxt(etNumberOfPeople),
+                        "amount" to  etAmount.text.toString(),
+                        "type" to type,
+                        "subtype" to subtype,
+                        "subscriber_info" to beneficiarylist.toList() as Serializable
+                    ))
+
+                }
+
+
+
+
+
+
+//                mFragmentNavigation.pushFragment(ConfirmationFragment().withArguments(
+//                    "package" to type,
+//                    "duration" to duration,
+//                    "subscriber" to Utils.getTetxt(etNumberOfPeople),
+//                    "amount" to  etAmount.text.toString(),
+//                    "type" to type,
+//                    "subtype" to subtype
+//
+//                ))
             } else {
                 Toast.makeText(context,"Please enter a number to proced", Toast.LENGTH_SHORT).show()
             }

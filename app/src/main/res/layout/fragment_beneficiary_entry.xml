@@ -1,14 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/inside_background"
         tools:context=".views.fragment.insidefrgments.dashoard.enrolment.BeneficiaryEntry">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <Button
+                android:id="@+id/backButtonBeneficiary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@null"
+                android:drawableLeft="@drawable/icon_back_arrow"
+                android:drawablePadding="-35dp"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Back"
+                android:textAllCaps="false"
+                android:textColor="@color/primaryblue"
+                android:textSize="12sp"
+                app:iconTint="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/tvTitleDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppinssemibold"
+                android:text="Update Beneficiary"
+                android:textColor="@color/primaryColor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/backButtonBeneficiary" />
+
+        <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Kindly Input your beneficiary details "
+                android:textAlignment="center"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleDetails" />
+
+        <TextView
+                android:id="@+id/textView27"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/poppinsregular"
+                android:text="select phone number from contact"
+                android:textAlignment="viewStart"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/contactSwitch"
+                app:layout_constraintEnd_toStartOf="@+id/contactSwitch"
+                app:layout_constraintStart_toStartOf="@+id/phoneLayout"
+                app:layout_constraintTop_toTopOf="@+id/contactSwitch" />
+
+        <TextView
+                android:id="@+id/benetitle"
+                android:layout_width="347dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Please confirm beneficiary details."
+                android:textAlignment="center"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/benefSubmitButton" />
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/FirstNameLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:hint="First Name"
+                android:textColorHint="@color/hint_selector"
+                app:boxStrokeColor="@color/stroke_selector"
+                app:hintTextColor="#694E5157"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                app:startIconDrawable="@drawable/icon_person"
+                app:startIconTint="@color/iconcolor">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFirstBeneficiaryName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsregular"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/SurNameLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:hint="Last Name"
+                android:textColorHint="@color/hint_selector"
+                app:boxStrokeColor="@color/stroke_selector"
+                app:hintTextColor="#694E5157"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/FirstNameLayout"
+                app:startIconDrawable="@drawable/icon_person"
+                app:startIconTint="@color/iconcolor">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSurnameBeneficiaryName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsregular"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/EmailLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:hint="Email"
+                android:textColorHint="@color/hint_selector"
+                app:boxStrokeColor="@color/stroke_selector"
+                app:hintTextColor="#694E5157"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SurNameLayout"
+                app:startIconDrawable="@drawable/icon_email"
+                app:startIconTint="@color/iconcolor">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsregular"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:hint="Phone Number"
+                android:textColorHint="@color/hint_selector"
+                app:boxStrokeColor="@color/stroke_selector"
+                app:hintTextColor="#694E5157"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/EmailLayout"
+                app:startIconDrawable="@drawable/icon_phone"
+                app:startIconTint="@color/iconcolor">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsregular"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Switch
+                android:id="@+id/contactSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/phoneLayout"
+                app:layout_constraintTop_toBottomOf="@+id/phoneLayout" />
+
+        <Button
+                android:id="@+id/benefSubmitButton"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/item_curve_edges_blue_fill"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contactSwitch" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/beneficiaryListRecycler"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/benetitle" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -12,6 +12,7 @@ import com.qucoon.myhmo.model.response.enroluser.EnroluserResponse
 import com.qucoon.myhmo.model.response.initpayment.InitpaymentResponse
 import com.qucoon.myhmo.repository.DashboardRepossitory
 import com.qucoon.myhmo.repository.implDashboardRepossitory
+import com.qucoon.myhmo.views.fragment.insidefrgments.dashoard.enrolment.BeneficiaryDetails
 import com.qucoon.nibbs.utils.SingleLiveEvent
 
 
@@ -23,11 +24,11 @@ class DashboardViewModel(private val dashboardRepossitory: DashboardRepossitory,
 
 
     fun enrolusers( amount: String, category_type: String, duration: String, schedule_payment: String,
-                    subscriber: String, subtype: String, user_package: String){
+                    subscriber: String, subtype: String, user_package: String,subscriber_info: List<BeneficiaryDetails>){
         var request = EnroluserRequest(amount = amount,category_type = category_type,
             customer_email = paperPrefs.getStringPref(PaperPrefs.EMAIL),customerid = paperPrefs.getStringPref(PaperPrefs.USERID),
         duration = duration,firstName = paperPrefs.getStringPref(PaperPrefs.FIRSTNAME), lastName= paperPrefs.getStringPref(PaperPrefs.LASTNAME),
-        schedule_payment = schedule_payment,subscriber = subscriber,subtype = subtype,user_package = user_package)
+        schedule_payment = schedule_payment,subscriber = subscriber,subtype = subtype,user_package = user_package, subscriber_info = subscriber_info)
 
         apiRequest(request,dashboardRepossitory::enrolUser,enroluserResponse,{it.responsemessage})
 
