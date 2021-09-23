@@ -59,6 +59,7 @@ class NewPasswordFragment : BaseFragment() {
 
      fun initViewModel(){
          setUpObservers(outsideViewModel)
+
          outsideViewModel.newPasswordResetResponse.observe(viewLifecycleOwner, Observer {
              mFragmentNavigation.pushFragment(SuccessFragment().withArguments(
                  "title" to "Password Reset Successful",

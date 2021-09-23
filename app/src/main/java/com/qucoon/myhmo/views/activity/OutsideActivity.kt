@@ -29,9 +29,9 @@ import java.text.DateFormat
 import java.util.*
 
 
+
 class OutsideActivity : BaseActivity() {
 
-    // these are location libraries
     lateinit var  mFusedLocationClient: FusedLocationProviderClient
     lateinit var mSettingsClient: SettingsClient
     lateinit var  mLocationRequest: LocationRequest
@@ -43,9 +43,7 @@ class OutsideActivity : BaseActivity() {
     private val REQUEST_CHECK_SETTINGS = 100
     lateinit var mLastUpdateTime: String
     private var mRequestingLocationUpdates: Boolean? = null
-
     lateinit var  paperPrefs:PaperPrefs
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,8 +99,6 @@ class OutsideActivity : BaseActivity() {
                 paperPrefs.savePref(PaperPrefs.PUSHID,msg)
             })
     }
-
-
     fun init(){
 
         CheckPermissionUtil.checkLocation(this, PermissionUtil.ReqPermissionCallback { b ->
@@ -144,7 +140,6 @@ class OutsideActivity : BaseActivity() {
             }
         })
     }
-
     private fun setLocation(latitde: Double, longitude: Double) {
         Timber.e("latitude is $latitde logitude is $longitude")
         println(        "latitude is $latitde logitude is $longitude")

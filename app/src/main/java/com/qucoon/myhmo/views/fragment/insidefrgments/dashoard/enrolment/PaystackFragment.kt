@@ -10,12 +10,11 @@ import android.webkit.WebViewClient
 import androidx.lifecycle.Observer
 import com.example.neptune.utils.argument
 import com.example.neptune.utils.stripAmount
-import com.example.neptune.utils.withArguments
 import com.qucoon.myhmo.R
 import com.qucoon.myhmo.database.PaperPrefs
 import com.qucoon.myhmo.database.getStringPref
+import com.qucoon.myhmo.database.savePref
 import com.qucoon.myhmo.viewmodel.DashboardViewModel
-import com.qucoon.myhmo.views.fragment.outsidefragment.SuccessFragment
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_paystack.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -79,6 +78,10 @@ class PaystackFragment : BaseFragment() {
 
         dashboardViewModel.paystackConfirmationResponse.observe(viewLifecycleOwner, Observer {
 
+            paperPrefs.savePref(PaperPrefs.CATEGORYTYPE,type)
+            paperPrefs.savePref(PaperPrefs.DAYSLEFT,getDaysLeft(duration))
+            paperPrefs.savePref(PaperPrefs.DURATION,duration)
+
             dashboardViewModel.enrolusers(amount.stripAmount().replace(".00","00"),type,duration,schedulapayment,
                 subscriber,subtype,type,subscriber_info)
 
@@ -86,13 +89,28 @@ class PaystackFragment : BaseFragment() {
 
         dashboardViewModel.enroluserResponse.observe(viewLifecycleOwner, Observer {
 
-                     mFragmentNavigation.pushFragment(InsideSuccessFragment().withArguments(
-                        "title" to "Successful",
-                        "message" to "You have successfully enroled on MYHMO, Please check ${paperPrefs.getStringPref(PaperPrefs.EMAIL)} to validate your subscription." +
-                                " You can now contact the doctor on MYHMO."))
+            mFragmentNavigation.pushFragment(UploadPictureFragment())
+
         })
 
     }
+
+     fun getDaysLeft(datetype:String):String{
+         var number=""
+         when(datetype){
+             "Annually"->{
+                 number="365"
+             }
+             "Quaterly"->{
+                 number="90"
+             }
+             "Monthly"->{
+                 number= "30"
+             }
+             else->{}
+         }
+          return number
+     }
 
      fun initWebview(){
          webView.loadUrl(paystackurl)

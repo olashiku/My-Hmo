@@ -5,6 +5,7 @@ import kotlinx.coroutines.Deferred
 import timber.log.Timber
 
 open class BaseRepository {
+
     suspend fun <R:Any,T:Any> safeApiCall(request: R, apiCall: (request:R) -> Deferred<T>, checkIfSuccessful:(T)->Boolean): UseCaseResult<T> {
         return try {
             val response = apiCall(request).await()

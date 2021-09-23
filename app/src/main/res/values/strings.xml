@@ -17,6 +17,9 @@
     <string name="home">Home</string>
     <string name="fcm_token">%s</string>
 
+    <string name="secretkey1">BGtUcK8C9duJHTz6YVfdWYMsR/lB0b2yYKJomY1j</string>
+    <string name="privateaccesskey1">AKIAXFUE6YJTSK33CB4B</string>
+
 
     <string name="phone_req_reason">We need
         <b>phone permission</b>

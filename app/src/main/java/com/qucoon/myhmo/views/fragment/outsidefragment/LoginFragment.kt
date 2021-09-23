@@ -19,12 +19,14 @@ import com.qucoon.myhmo.database.PaperPrefs
 import com.qucoon.myhmo.database.getStringPref
 import com.qucoon.myhmo.popups.utilitypupups.SignoutBottomSheetDialogFragment
 import com.qucoon.myhmo.popups.utilitypupups.SingleButtonBottomSheetDialogFragment
+import com.qucoon.myhmo.repository.OutsideRepository
 import com.qucoon.myhmo.viewmodel.OutsideViewModel
 import com.qucoon.myhmo.views.activity.MainActivity
 import com.qucoon.myhmo.views.activity.OutsideActivity
 import com.qucoon.nibbs.utils.Validator
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -33,6 +35,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class LoginFragment : BaseFragment() {
 
      val outsideViewModel: OutsideViewModel by viewModel()
+    val outsideRepository: OutsideRepository by inject()
 
 
     override fun onCreateView(
@@ -72,6 +75,7 @@ class LoginFragment : BaseFragment() {
             if(Validator.isValidEmail(etFirstAgentName) && Validator.isValidPassword2(etPassword)){
                 outsideViewModel.loginUser(etPassword.getString(),etFirstAgentName.getString())
                 outsideViewModel.loginResponse.observeChange(viewLifecycleOwner){
+
 
                     val myIntent = Intent(activity, MainActivity::class.java)
                     startActivity(myIntent)

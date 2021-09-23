@@ -1,34 +1,23 @@
 package com.qucoon.myhmo.views.fragment.insidefrgments.YourHealth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.example.neptune.utils.updateRecycler
+import com.example.neptune.utils.withArguments
 import com.qucoon.myhmo.R
+import com.qucoon.myhmo.views.activity.MainActivity
+import com.qucoon.myhmo.views.fragment.insidefrgments.YourHealth.HealthTips.HealthTipsDisplayFragment
+import com.qucoon.royalexchange.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_exposirelist.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ExposirelistFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ExposirelistFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class ExposirelistFragment : BaseFragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +27,94 @@ class ExposirelistFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_exposirelist, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ExposirelistFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ExposirelistFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initOnClck()
+        initView()
     }
+
+     fun initOnClck(){
+         backButtonExposure.setOnClickListener { mFragmentNavigation.popFragment() }
+     }
+
+
+     fun initView(){
+
+         (activity as MainActivity).hideTablayout()
+
+         val list = listOf<ExposureData>(
+             ExposureData("Chest X-Rays","COVERED"),
+             ExposureData("Plain Abdominal X-Rays","COVERED"),
+             ExposureData("Limbs X-Rays","COVERED"),
+             ExposureData("Skull X-Rays","COVERED"),
+             ExposureData("Lumbosacral X-Rays","COVERED"),
+             ExposureData("Serum Bilirubin","COVERED"),
+             ExposureData("Serum albumin","COVERED"),
+             ExposureData("Chest X-Rays","COVERED"),
+             ExposureData("Plain Abdominal X-Rays","COVERED"),
+             ExposureData("Limbs X-Rays","COVERED"),
+             ExposureData("Skull X-Rays","COVERED"),
+             ExposureData("Lumbosacral X-Rays","COVERED"),
+             ExposureData("Serum Bilirubin","COVERED"),
+             ExposureData("Serum albumin","COVERED"),
+             ExposureData("Limbs X-Rays","COVERED"),
+             ExposureData("Skull X-Rays","COVERED"),
+             ExposureData("Lumbosacral X-Rays","COVERED"),
+             ExposureData("Serum Bilirubin","COVERED"),
+             ExposureData("Serum albumin","COVERED"),
+             ExposureData("Chest X-Rays","COVERED"),
+             ExposureData("Plain Abdominal X-Rays","COVERED"),
+             ExposureData("Limbs X-Rays","COVERED"),
+             ExposureData("Skull X-Rays","COVERED"),
+             ExposureData("Lumbosacral X-Rays","COVERED"),
+             ExposureData("Limbs X-Rays","COVERED"),
+             ExposureData("Skull X-Rays","COVERED"),
+             ExposureData("Lumbosacral X-Rays","COVERED"),
+             ExposureData("Serum Bilirubin","COVERED"),
+             ExposureData("Serum albumin","COVERED"),
+             ExposureData("Chest X-Rays","COVERED"),
+             ExposureData("Plain Abdominal X-Rays","COVERED"),
+             ExposureData("Limbs X-Rays","COVERED"),
+             ExposureData("Skull X-Rays","COVERED"),
+             ExposureData("Lumbosacral X-Rays","COVERED"),
+             ExposureData("Limbs X-Rays","COVERED"),
+             ExposureData("Skull X-Rays","COVERED"),
+             ExposureData("Lumbosacral X-Rays","COVERED"),
+             ExposureData("Serum Bilirubin","COVERED"),
+             ExposureData("Serum albumin","COVERED"),
+             ExposureData("Chest X-Rays","COVERED"),
+             ExposureData("Plain Abdominal X-Rays","COVERED"),
+             ExposureData("Limbs X-Rays","COVERED"),
+             ExposureData("Skull X-Rays","COVERED"),
+             ExposureData("Lumbosacral X-Rays","COVERED"))
+
+          updaterecycler(list)
+     }
+
+     fun updaterecycler(list: List<ExposureData>) {
+         benefitRecycler.updateRecycler(context!!, list, R.layout.exposure_list_blueprint, listOf(R.id.tvCoverName, R.id.tvCoverStatus),
+             { innerViews, position ->
+                 val tvCoverName = innerViews[R.id.tvCoverName] as TextView
+                 val tvCoverStatus = innerViews[R.id.tvCoverStatus] as TextView
+
+
+                 tvCoverName.text = list[position].name
+                 tvCoverStatus.text = list[position].coverage
+
+
+             },
+             { position ->
+
+             })
+     }
+
+
+
+
+ //   benefitRecycler
+
 }
+
+data class ExposureData(var name:String, var coverage:String)

@@ -13,6 +13,7 @@ import com.ncapdevi.fragnav.FragNavController
 import com.ncapdevi.fragnav.FragNavLogger
 import com.ncapdevi.fragnav.FragNavTransactionOptions
 import com.qucoon.myhmo.R
+import com.qucoon.myhmo.database.PaperPrefs
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -28,7 +29,7 @@ open class BaseActivity: AppCompatActivity(), BaseFragment.FragmentNavigation, F
 
     lateinit var basefragNavController: FragNavController
      var backgroundJobs = Job()
-   // val paperPref:PaperPrefs by inject()
+   // val paperPrefs: PaperPrefs by inject()
     override val coroutineContext: CoroutineContext
         get() = backgroundJobs + Dispatchers.Main
 

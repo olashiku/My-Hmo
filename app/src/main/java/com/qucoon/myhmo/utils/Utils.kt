@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.os.Handler
+import android.util.Patterns
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
@@ -47,6 +48,36 @@ object Utils {
             return true
         }
     }
+
+
+    fun checkValidName(edittext: EditText, context:Context?, view: View?):Boolean{
+        if(edittext.text.length < 2){
+            Toast.makeText(context,"Please use a valid name", Toast.LENGTH_SHORT).show()
+            return false
+        } else {
+            return true
+        }
+    }
+
+    fun checkvalidemail(edittext: EditText, context:Context?, view: View?):Boolean{
+        val valid = Patterns.EMAIL_ADDRESS.matcher(edittext.text.toString()).matches()
+        if(!valid){
+            Toast.makeText(context,"Please use a valid email", Toast.LENGTH_SHORT).show()
+            return false
+        } else {
+            return true
+        }
+    }
+
+    fun checkvalidphone(edittext: EditText, context:Context?, view: View?):Boolean{
+        if(edittext.text.length < 9){
+            Toast.makeText(context,"Please use a valid phone", Toast.LENGTH_SHORT).show()
+            return false
+        } else {
+            return true
+        }
+    }
+
 
     fun hideKeyboardFrom(context: Context, view: View) {
         val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager

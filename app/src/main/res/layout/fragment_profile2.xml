@@ -92,29 +92,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ImageData" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ImageData"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="36dp"
-            android:src="@drawable/avatar_dummy"
-            app:civ_border_color="@color/colorPrimary"
-            app:civ_border_width="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitleDetails" />
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ImageData"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="36dp"
+                android:src="@drawable/avatar_dummy"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleDetails" />
 
-    <ImageView
-            android:id="@+id/imageView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:src="@drawable/cameraicon"
-            app:layout_constraintEnd_toEndOf="@+id/ImageData"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/ImageData"
-            app:layout_constraintTop_toTopOf="@+id/ImageData" />
+        <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:src="@drawable/cameraicon"
+                app:layout_constraintEnd_toEndOf="@+id/ImageData"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/ImageData"
+                app:layout_constraintTop_toTopOf="@+id/ImageData" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

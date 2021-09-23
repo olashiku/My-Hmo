@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/dialog_rounded"
+        android:minWidth="300dp"
+        android:orientation="vertical"
+        >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView4"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        <Button
+                android:id="@+id/continueButton"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/item_curve_edges_blue_fill"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Continue"
+                android:textAllCaps="false"
+
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/cancelbutton"
+                app:layout_constraintTop_toBottomOf="@+id/title2"
+                app:layout_constraintVertical_bias="0.3" />
+
+        <Button
+                android:id="@+id/cancelbutton"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/item_curve_edges_sharpblue_2"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Cancel"
+
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/continueButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title2"
+                app:layout_constraintVertical_bias="0.3" />
+
+        <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/goodquestion"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Please complete your enrolment before you proceed"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/primaryColor"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+
+        <TextView
+                android:id="@+id/title2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/poppinsregular"
+                android:text="Please complete your enrolment before you proceed"
+                android:textAlignment="center"
+                android:textColor="@color/primaryColor"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

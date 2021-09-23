@@ -18,9 +18,11 @@ import com.qucoon.myhmo.model.response.newpasswordReset.NewPasswordResetResponse
 import com.qucoon.myhmo.model.response.resetpassword.ResetPasswordResponse
 import com.qucoon.myhmo.model.request.changepassword.ChangePasswordRequest
 import com.qucoon.myhmo.model.request.confirmpaystack.PaystackConfirmationRequest
+import com.qucoon.myhmo.model.request.enrolmentcomplete.enrolmentcompleteRequest
 import com.qucoon.myhmo.model.request.enroluser.EnroluserRequest
 import com.qucoon.myhmo.model.request.initpaystack.InitpaymentRequest
 import com.qucoon.myhmo.model.response.confirmpaystack.PaystackConfirmationResponse
+import com.qucoon.myhmo.model.response.enrolmentcompleteResponse
 import com.qucoon.myhmo.model.response.enroluser.EnroluserResponse
 import com.qucoon.myhmo.model.response.initpayment.InitpaymentResponse
 
@@ -62,5 +64,8 @@ interface HmoAPI {
 
     @POST("enroluser")
     fun enrolusers(@Body params: EnroluserRequest): Deferred<EnroluserResponse>
+
+    @POST("enrolmentcomplete")
+    fun enrolmentcomplete(@Body params: enrolmentcompleteRequest):Deferred<enrolmentcompleteResponse>
 
 }

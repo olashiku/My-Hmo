@@ -13,22 +13,24 @@
                  app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
                  app:layout_constraintBottom_toTopOf="@+id/tabLayout"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView android:layout_width="match_parent"
-      android:layout_height="60dp"
-      app:layout_constraintEnd_toEndOf="parent"
-       app:itemIconSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-         app:menu="@menu/bottom_navigation_menu"
-          app:itemTextAppearanceInactive="@style/BottomNavigationViewInactive"
-           app:itemTextAppearanceActive="@style/BottomNavigationViewActive"
-            app:labelVisibilityMode="labeled"
-             app:elevation="8dp"
-            app:itemRippleColor="@color/primaryblue"
-            app:itemTextColor="@color/bnv_tab_item_foreground"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:background="@drawable/bottom_navigation_background"
-             app:itemIconTint="@drawable/selector"
-             android:id="@+id/tabLayout">
+            app:elevation="8dp"
+            app:itemIconSize="20dp"
+            app:itemIconTint="@drawable/selector"
+            app:itemRippleColor="@color/primaryblue"
+            app:itemTextAppearanceActive="@style/BottomNavigationViewActive"
+            app:itemTextAppearanceInactive="@style/BottomNavigationViewInactive"
+            app:itemTextColor="@color/bnv_tab_item_foreground"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_navigation_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

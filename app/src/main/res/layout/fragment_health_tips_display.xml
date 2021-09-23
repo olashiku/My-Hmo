@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/inside_background"
+        tools:context=".views.fragment.insidefrgments.YourHealth.HealthTips.HealthTipsDisplayFragment">
+
+
+    <Button
+            android:id="@+id/backButtonHealthTips2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/icon_back_arrow"
+            android:drawablePadding="-35dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Back"
+            android:textAllCaps="false"
+            android:textColor="@color/primaryblue"
+            android:textSize="12sp"
+            app:iconTint="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/tvTitleDetails9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="health Tips"
+            android:textColor="@color/primaryColor"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/backButtonHealthTips2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/backButtonHealthTips2" />
+
+    <TextView
+            android:id="@+id/txTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="Feel Good About Yourself TodayFeel Good About Yourself Today"
+            android:textColor="@color/primaryColor"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backButtonHealthTips2" />
+
+    <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="363dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text='Feel Good About Yourself Today","Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you'
+            android:textColor="@color/primaryColor"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/displayImage" />
+
+    <ImageView
+            android:id="@+id/displayImage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txTitle"
+            tools:src="@tools:sample/avatars" />
+</androidx.constraintlayout.widget.ConstraintLayout>

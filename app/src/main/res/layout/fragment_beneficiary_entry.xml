@@ -205,7 +205,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppinsregular"
                     android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
+                    android:inputType="phone"
+                    android:maxLength="11"
                     android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 

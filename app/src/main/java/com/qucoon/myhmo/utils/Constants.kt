@@ -11,4 +11,9 @@ object Constants {
     val SUCCESS = "00"
     val SUCCESS2 = "01"
 
+    val FRESHCHARAPPID="e3b899ae-3ae0-412c-ba99-50c822016a3d"
+    val FRESHCHATKEY="a0cc7957-ad29-4ca0-950f-b14139ddf749"
+    val FRESHCHATDOMAIN="msdk.freshchat.com"
+
+
 }

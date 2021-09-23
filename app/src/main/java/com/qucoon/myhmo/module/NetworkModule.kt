@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-const val BASEURL = "https://1ycdxn9l98.execute-api.us-east-1.amazonaws.com/myhomstage/"
+const val BASEURL = "baseURL would be here"
 
 val networkModule = module {
     single { createWebService<HmoAPI>(RxJava2CallAdapterFactory.create(), BASEURL,paperPrefs = get()) }

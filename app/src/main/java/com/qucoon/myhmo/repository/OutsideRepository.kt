@@ -4,6 +4,7 @@ import com.example.neptune.utils.Constants
 import com.nubis.watchguard.utils.UseCaseResult
 import com.qucoon.myhmo.APIs.HmoAPI
 import com.qucoon.myhmo.database.PaperPrefs
+import com.qucoon.myhmo.database.getStringPref
 import com.qucoon.myhmo.database.savePref
 import com.qucoon.myhmo.model.request.authemail.AuthemailRequest
 import com.qucoon.myhmo.model.request.authenticatepassword.AuthenticatePasswordRequest
@@ -22,7 +23,7 @@ import com.qucoon.myhmo.model.response.resetpassword.ResetPasswordResponse
 
 interface OutsideRepository {
     suspend  fun loginuser(loginRequest: LoginRequest): UseCaseResult<LoginResponse>
-    suspend fun saveLoginResponse(request: LoginRequest,response: LoginResponse)
+    suspend fun saveLoginResponse(request: LoginRequest? = null,response: LoginResponse)
     suspend fun registeruser(registerRequest: RegisterRequest):UseCaseResult<RegisterResponse>
     suspend fun authEmail(authemailRequest: AuthemailRequest):UseCaseResult<AuthemailResponse>
     suspend fun verifyEmail(verifyEmailRequest: verifyEmailRequest):UseCaseResult<DefaultResponse>
@@ -37,7 +38,7 @@ interface OutsideRepository {
           return safeApiCall(loginRequest,hmoAPI::login, { response ->response.responsecode == Constants.SUCCESS},this::saveLoginResponse)
       }
 
-      override suspend fun saveLoginResponse(request: LoginRequest, response: LoginResponse) {
+      override suspend fun saveLoginResponse(request: LoginRequest?, response: LoginResponse) {
           saveLoginResponsee(response)
       }
 
@@ -67,17 +68,28 @@ interface OutsideRepository {
       }
 
       private fun saveLoginResponsee(response: LoginResponse) {
+
+          paperPrefs.savePref(PaperPrefs.SUBSCRBEDPACKAGE,response.packageDetails!!.packagee)
+          paperPrefs.savePref(PaperPrefs.DURATION,response.packageDetails.duration)
+          paperPrefs.savePref(PaperPrefs.CATEGORYTYPE,response.packageDetails.category_type)
+          paperPrefs.savePref(PaperPrefs.SUBTYPE,response.packageDetails.subtype)
+          paperPrefs.savePref(PaperPrefs.DAYSLEFT,response.packageDetails.daysleft)
+          paperPrefs.savePref(PaperPrefs.CUSTOMERID,response.user.userid)
+          paperPrefs.savePref(PaperPrefs.ENROLSTATUS,response.user.enrolment_status)
           paperPrefs.savePref(PaperPrefs.FIRSTNAME,response.user.firstName)
           paperPrefs.savePref(PaperPrefs.LASTNAME,response.user.lastName)
           paperPrefs.savePref(PaperPrefs.EMAIL,response.user.email)
           paperPrefs.savePref(PaperPrefs.PHONE,response.user.phone)
           paperPrefs.savePref(PaperPrefs.IMAGE,response.user.image)
-          paperPrefs.savePref(PaperPrefs.ENROLSTATUS,response.user.status)
-          paperPrefs.savePref(PaperPrefs.USERID,response.user.userid.toString())
+          paperPrefs.savePref(PaperPrefs.ACTIVESTATUS,response.user.activation_status)
+          paperPrefs.savePref(PaperPrefs.ADDRESS,response.user.address)
+          paperPrefs.savePref(PaperPrefs.DOB,response.user.dob)
+          paperPrefs.savePref(PaperPrefs.GENDER,response.user.gender)
 
 
 
-      }
+
+          }
 
 
   }

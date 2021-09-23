@@ -10,10 +10,16 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.neptune.utils.*
 import com.example.neptune.utils.Utils.checkIsEmpty
+import com.example.neptune.utils.Utils.checkValidName
+import com.example.neptune.utils.Utils.checkvalidemail
+import com.example.neptune.utils.Utils.checkvalidphone
 import com.qucoon.myhmo.R
+import com.qucoon.myhmo.database.PaperPrefs
+import com.qucoon.myhmo.database.getStringPref
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_beneficiary_entry.*
 import kotlinx.android.synthetic.main.fragment_beneficiary_entry.etEmail
+import kotlinx.android.synthetic.main.fragment_category_display.*
 import java.io.Serializable
 
 // TODO: Rename parameter arguments, choose names that match
@@ -41,7 +47,7 @@ class BeneficiaryEntry : BaseFragment() {
 
     var beneficiarylist: MutableList<BeneficiaryDetails> = mutableListOf()
 
-      var subscriberInHouse:Int  = -1
+      var subscriberInHouse:Int  = 0
 
 
 
@@ -62,10 +68,16 @@ class BeneficiaryEntry : BaseFragment() {
     }
 
      fun initView(){
+         beneficiaryListRecycler.setNestedScrollingEnabled(false);
 
-         subscriberInHouse += subscriber.toInt()
+         beneficiarylist.add(BeneficiaryDetails(paperPrefs.getStringPref(PaperPrefs.FIRSTNAME),paperPrefs.getStringPref(PaperPrefs.LASTNAME),
+             paperPrefs.getStringPref(PaperPrefs.EMAIL), paperPrefs.getStringPref(PaperPrefs.PHONE),"Y"))
 
 
+
+         println("this is the number of subscribers" + subscriber)
+         subscriberInHouse += subscriber.toInt() -1
+         println("this is the number of subscribers readded" + subscriberInHouse)
 
      }
 
@@ -84,12 +96,16 @@ class BeneficiaryEntry : BaseFragment() {
              if(!iscomplete){
 
                  if(checkIsEmpty(etPhone,context,view) && checkIsEmpty(etEmail,context,view)
-                     && checkIsEmpty(etFirstBeneficiaryName,context,view) && checkIsEmpty(etSurnameBeneficiaryName,context,view)){
+                     && checkIsEmpty(etFirstBeneficiaryName,context,view) && checkIsEmpty(etSurnameBeneficiaryName,context,view)
+                     && checkValidName(etFirstBeneficiaryName,context,view)
+                     && checkValidName(etSurnameBeneficiaryName,context,view) && checkvalidphone(etPhone,context,view)
+                     && checkvalidemail(etEmail,context,view)){
 
 
 
-                     if(subscriberInHouse!=0){
+                     if(subscriberInHouse!=1){
 
+                         subscriberInHouse = subscriberInHouse -1
                          beneficiarylist.add(BeneficiaryDetails(Utils.getTetxt(etFirstBeneficiaryName),Utils.getTetxt(etSurnameBeneficiaryName),Utils.getTetxt(etEmail),
                              Utils.getTetxt(etPhone),"N"))
                          benetitle.show()
@@ -99,7 +115,8 @@ class BeneficiaryEntry : BaseFragment() {
                          etSurnameBeneficiaryName.clear()
                          initRecycler()
                          Utils.hideKeyboardFrom(context!!,view!!)
-                         benefSubmitButton.setText("${subscriberInHouse--} beneficiary(s) left")
+                         benefSubmitButton.setText("${subscriberInHouse} beneficiary(s) left")
+
                      } else {
 
                          iscomplete = true
@@ -112,7 +129,7 @@ class BeneficiaryEntry : BaseFragment() {
                          etFirstBeneficiaryName.clear()
                          etSurnameBeneficiaryName.clear()
                          initRecycler()
-
+                         Utils.hideKeyboardFrom(context!!,view!!)
                      }
 
 
@@ -121,7 +138,17 @@ class BeneficiaryEntry : BaseFragment() {
                      Toast.makeText(context,"Please input values in the required field.",Toast.LENGTH_SHORT).show()
                  }
              } else {
-                 Toast.makeText(context,"i can launch freely like this",Toast.LENGTH_SHORT).show()
+
+
+                 mFragmentNavigation.pushFragment(ConfirmationFragment().withArguments(
+                     "package" to type,
+                     "duration" to duration,
+                     "subscriber" to subscriber,
+                     "amount" to  amount,
+                     "type" to type,
+                     "subtype" to subtype,
+                     "subscriber_info" to beneficiarylist.toList() as Serializable ))
+
 
 
              }
@@ -160,25 +187,34 @@ class BeneficiaryEntry : BaseFragment() {
      }
 
     private fun removeBeneficiary(index: BeneficiaryDetails, size: Int) {
-        if(size == 1){
-            beneficiarylist.remove(index)
-            beneficiaryListRecycler.gone()
-            benetitle.gone()
-            subscriberInHouse  = beneficiarylist.size
-            subscriberInHouse += subscriber.toInt() -1
-            println("subscriberInHouse $subscriberInHouse")
-            benefSubmitButton.setText("Submit")
-            iscomplete = false
+
+        if(!paperPrefs.getStringPref(PaperPrefs.EMAIL).equals(index.email)){
+            if(size == 1){
+                beneficiarylist.remove(index)
+                beneficiaryListRecycler.gone()
+                benetitle.gone()
+                subscriberInHouse  = beneficiarylist.size
+                subscriberInHouse += subscriber.toInt() -1
+                println("subscriberInHouse $subscriberInHouse")
+                benefSubmitButton.setText("Submit")
+                iscomplete = false
+                println("this is the value i am looking for empty value " +subscriberInHouse)
+
+            }else {
+                iscomplete = false
+                beneficiarylist.remove(index)
+                subscriberInHouse  = subscriberInHouse +1
+                benefSubmitButton.setText("${subscriberInHouse} beneficiary(s) left")
+                initRecycler()
+                println("this is the value i am looking for has value " +subscriberInHouse)
 
 
-        }else {
-            iscomplete = false
-            beneficiarylist.remove(index)
-            subscriberInHouse  = beneficiarylist.size
-            subscriberInHouse =subscriberInHouse +1
-            benefSubmitButton.setText("${subscriberInHouse++} beneficiary(s) left")
-            initRecycler()
+            }
+        } else {
+            Toast.makeText(context,"You cannot delete yourself as a sponsor", Toast.LENGTH_SHORT).show()
         }
+
+
 
     }
 

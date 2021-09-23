@@ -72,9 +72,9 @@
                 android:layout_marginEnd="24dp"
                 app:image="@drawable/groupicon"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/individualButton"
+                app:layout_constraintTop_toBottomOf="@+id/familyButton"
                 app:text="Group"
                 app:text2="Enrol your teammates on MYHMO." />
 
@@ -89,7 +89,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/groupButton"
+                app:layout_constraintTop_toBottomOf="@+id/individualButton"
                 app:text="Family"
                 app:text2="Enrol your family on myhmo" />
 
@@ -106,8 +106,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/familyButton"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/groupButton"
                 app:text="Corporate"
                 app:text2="Register your company for HMO service" />
 

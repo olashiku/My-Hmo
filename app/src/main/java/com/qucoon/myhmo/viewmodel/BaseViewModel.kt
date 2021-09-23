@@ -34,6 +34,8 @@ open class BaseViewModel:ViewModel(), CoroutineScope,LifecycleObserver {
         }
         return true
     }
+
+    //         apiRequest(request,dashboardRepossitory::enrolUser,enroluserResponse,{it.responsemessage})
     fun <R:Any,T:Any> apiRequest(request:R, apiCall:suspend (request:R)-> UseCaseResult<T>, observer:SingleLiveEvent<T>, getError:(response:T) -> String){
         showLoading.value = true
         launch {

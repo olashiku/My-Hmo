@@ -32,6 +32,26 @@ class PaperPrefs {
         val PUSHID="push"
         val ENROLSTATUS="Enrolstatus"
         val USERID= "UserID"
+        val ACTIVESTATUS=""
+        val CUSTOMERID="s33"
+        val ADDRESS="address"
+        val GENDER="gender"
+        val DOB="dob"
+
+
+
+//        "activation_status": "Y",
+//        "address": "123 broad s",
+//        "gender": "Male",
+//        "dob": "1990-04-23"
+//
+
+        val SUBSCRBEDPACKAGE="A1"
+        val DURATION="A2"
+        val CATEGORYTYPE="A3"
+        val SUBTYPE="A4"
+        val DAYSLEFT="A5"
+
  }
     private  var context: Context
     private fun getStringFromPref(key:String):String{
@@ -76,6 +96,7 @@ class PaperPrefs {
 
 
     private fun <T:Any> saveAnyToPref(key: String,data:T){
+
         runBlocking {
             withContext(Dispatchers.IO){
                 Paper.book().write(key,data)

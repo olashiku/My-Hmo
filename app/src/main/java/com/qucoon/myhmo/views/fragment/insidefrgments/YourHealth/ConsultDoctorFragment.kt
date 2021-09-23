@@ -1,34 +1,31 @@
 package com.qucoon.myhmo.views.fragment.insidefrgments.YourHealth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import com.example.neptune.utils.getString
+import com.freshchat.consumer.sdk.Freshchat
+import com.freshchat.consumer.sdk.FreshchatMessage
 import com.qucoon.myhmo.R
+import com.qucoon.myhmo.database.PaperPrefs
+import com.qucoon.myhmo.database.getStringPref
+import com.qucoon.myhmo.views.activity.MainActivity
+import com.qucoon.myhmo.views.fragment.insidefrgments.YourHealth.consultation.ConsultConfirmationFragment
+import com.qucoon.royalexchange.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_consult_doctor.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ConsultDoctorFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ConsultDoctorFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class ConsultDoctorFragment : BaseFragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+
+    var selecedItem =""
+
+    private val benefList = arrayOf("My self")
+    private val symptomsList = arrayOf("Headache", "Back Pains", "Stomach Pain")
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +35,85 @@ class ConsultDoctorFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_consult_doctor, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ConsultDoctorFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ConsultDoctorFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+        initOnClick()
+        initSLider()
+    }
+
+     fun initSLider(){
+         val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
+             context!!,
+             android.R.layout.simple_dropdown_item_1line,
+             benefList
+         )
+         consultBeneficiary.setAdapter(adapter)
+
+         val adapter2: ArrayAdapter<String> = ArrayAdapter<String>(
+             context!!,
+             android.R.layout.simple_dropdown_item_1line,
+             symptomsList
+         )
+         primaryIssue.setAdapter(adapter2)
+     }
+
+
+
+    fun initOnClick(){
+
+        chatButton.setOnClickListener {
+            selecedItem ="chat"
+            chatButton.setImageResource(R.drawable.selectedchat)
+            callButton.setImageResource(R.drawable.unselectedcall)
+
+        }
+        callButton.setOnClickListener {
+            selecedItem = "call"
+            chatButton.setImageResource(R.drawable.unselectedchat)
+            callButton.setImageResource(R.drawable.selectedcall)
+        }
+
+
+        backButtonProfile2.setOnClickListener {
+            mFragmentNavigation.popFragment()
+        }
+
+
+
+        continueButtonBT2.setOnClickListener {
+
+            when(selecedItem){
+                "call" -> {
+
+                    val tag = "call"
+                    val msgText = "please call me. i am not feelign too good. thank you! my phone number is ${paperPrefs.getStringPref(PaperPrefs.PHONE)}"
+                    val FreshchatMessage = FreshchatMessage().setTag(tag).setMessage(msgText)
+                    Freshchat.sendMessage(context!!, FreshchatMessage)
+
+                    mFragmentNavigation.pushFragment(ConsultConfirmationFragment())
+                }
+                "chat" -> {
+
+                    val userMeta: MutableMap<String, String> = HashMap()
+                    userMeta["gender"] = paperPrefs.getStringPref(PaperPrefs.GENDER)
+                    userMeta["symptoms"] = primaryIssue.getString()
+                    Freshchat.getInstance(context!!).setUserProperties(userMeta)
+
+                    Freshchat.showConversations(context!!);
+                } else->{
+                    showError("Kindly select an option before you proceed.")
                 }
             }
+
+
+        }
     }
+
+     fun initView(){
+         (activity as MainActivity).hideTablayout()
+     }
+
+
 }

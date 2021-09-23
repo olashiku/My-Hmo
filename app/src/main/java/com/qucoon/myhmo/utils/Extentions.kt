@@ -16,6 +16,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.fragment.app.DialogFragment
@@ -93,6 +94,10 @@ fun View.setMarginTop(marginTop: Int) {
 }
 
 fun EditText.getString():String{
+    return this.text.toString()
+}
+
+fun AutoCompleteTextView.getString():String{
     return this.text.toString()
 }
 

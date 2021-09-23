@@ -13,10 +13,13 @@ import com.example.neptune.utils.updateRecycler
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 import com.qucoon.myhmo.R
-import com.qucoon.myhmo.dataclasses.HealthDataclasses
+import com.qucoon.myhmo.database.PaperPrefs
+import com.qucoon.myhmo.database.getStringPref
+import com.qucoon.myhmo.popups.utilitypupups.CheckEnrolmentDialogFragment
 import com.qucoon.myhmo.popups.utilitypupups.SignoutBottomSheetDialogFragment
 import com.qucoon.myhmo.views.activity.MainActivity
 import com.qucoon.myhmo.views.fragment.insidefrgments.YourHealth.*
+import com.qucoon.myhmo.views.fragment.insidefrgments.dashoard.enrolment.PackageFragment
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_apointment.*
 
@@ -29,7 +32,7 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
-class ApointmentFragment : BaseFragment() {
+class ApointmentFragment : BaseFragment(),CheckEnrolmentDialogFragment.EnrolmentCallback{
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,27 +51,67 @@ class ApointmentFragment : BaseFragment() {
      fun initOnClick(){
 
          myProfileButton.setOnClickListener {
-             mFragmentNavigation.pushFragment(ProfileFragment())
+
+             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
+                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+             } else {
+                 mFragmentNavigation.pushFragment(ProfileFragment())
+             }
+
+
          }
 
          healthtipsButton.setOnClickListener {
-             mFragmentNavigation.pushFragment(HealthTipsFragment())
+
+             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
+                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+             } else {
+                 mFragmentNavigation.pushFragment(HealthTipsFragment())
+             }
+
+
          }
 
          consultDoctorButtonn.setOnClickListener {
-             mFragmentNavigation.pushFragment(ConsultDoctorFragment())
+
+             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
+                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+             } else {
+                 mFragmentNavigation.pushFragment(ConsultDoctorFragment())
+             }
+
+
          }
 
          accessSecondaryCareButton.setOnClickListener {
-             mFragmentNavigation.pushFragment(SecondaryCareFragment())
+
+             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
+                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+             } else {
+              //   mFragmentNavigation.pushFragment(SecondaryCareFragment())
+                 showError("feature will be available soon.")
+
+             }
+
+
          }
 
          viewHospitalButton.setOnClickListener {
-             mFragmentNavigation.pushFragment(HospitalFragment())
+             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
+                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+             } else {
+                 mFragmentNavigation.pushFragment(HospitalFragment())
+             }
          }
 
          viewExposirelist.setOnClickListener {
-            mFragmentNavigation.pushFragment(ExposirelistFragment())
+             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
+                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+             } else {
+                 mFragmentNavigation.pushFragment(ExposirelistFragment())
+             }
+
+
          }
 
 
@@ -79,10 +122,15 @@ class ApointmentFragment : BaseFragment() {
 
         (activity as MainActivity).showTablayout()
 
-
-
-
     }
 
+    override fun EnrolmentStatus(value: Boolean) {
+        when(value){
+            true->{mFragmentNavigation.pushFragment(PackageFragment())}
+            false->{
+                showError("You have to enrol before you can perform any activity on MYHMO")
+            }
+        }
+    }
 
 }

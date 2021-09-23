@@ -1,14 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F5FAFF"
         tools:context=".views.fragment.insidefrgments.YourHealth.ConsultDoctorFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <Button
+            android:id="@+id/continueButtonBT2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/item_curve_edges_blue_fill"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Request Consultation"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dow_indexw"
+            app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+            android:id="@+id/backButtonProfile2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="24dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/icon_back_arrow"
+            android:drawablePadding="-35dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Back"
+            android:textAllCaps="false"
+            android:textColor="@color/primaryblue"
+            android:textSize="12sp"
+            app:iconTint="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Who is this consultation for?"
+            android:textColor="#1181B3"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backButtonProfile2" />
+
+    <TextView
+            android:id="@+id/textView33"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="28dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Please select a preferred consultation  medium"
+            android:textColor="#1181B3"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dow_index" />
+
+    <TextView
+            android:id="@+id/textView34"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="38dp"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Primary Compliant (Optional)"
+            android:textColor="#1181B3"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chatButton" />
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dow_index"
+            style="@style/ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView32">
+
+        <AutoCompleteTextView
+                android:id="@+id/consultBeneficiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:fontFamily="@font/poppinsregular"
+                android:hint="Select Beneficiary"
+                android:textSize="14sp"
+                tools:ignore="LabelFor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+            android:id="@+id/chatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/unselectedchat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+    <ImageView
+            android:id="@+id/callButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/unselectedcall"
+            app:layout_constraintBottom_toBottomOf="@+id/chatButton"
+            app:layout_constraintStart_toEndOf="@+id/chatButton"
+            app:layout_constraintTop_toTopOf="@+id/chatButton" />
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dow_indexw"
+            style="@style/ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView34">
+
+        <AutoCompleteTextView
+                android:id="@+id/primaryIssue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:fontFamily="@font/poppinsregular"
+                android:hint="Select primary Symptoms"
+                android:textSize="14sp"
+                tools:ignore="LabelFor" />
+    </com.google.android.material.textfield.TextInputLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

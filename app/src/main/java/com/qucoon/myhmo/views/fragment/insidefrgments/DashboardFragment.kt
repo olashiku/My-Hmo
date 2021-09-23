@@ -6,26 +6,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.freshchat.consumer.sdk.Freshchat
-import com.freshchat.consumer.sdk.FreshchatConfig
 
 import com.qucoon.myhmo.R
 import com.qucoon.myhmo.database.PaperPrefs
 import com.qucoon.myhmo.database.getStringPref
+import com.qucoon.myhmo.livedata.DataPasserLiveData
+import com.qucoon.myhmo.popups.utilitypupups.CheckEnrolmentDialogFragment
 import com.qucoon.myhmo.views.activity.MainActivity
 import com.qucoon.myhmo.views.fragment.insidefrgments.YourHealth.ConsultDoctorFragment
 import com.qucoon.myhmo.views.fragment.insidefrgments.dashoard.enrolment.PackageFragment
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import org.koin.java.KoinJavaComponent
 
 
-class DashboardFragment : BaseFragment() {
+class DashboardFragment : BaseFragment(),CheckEnrolmentDialogFragment.EnrolmentCallback {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    private val dataPasserLiveData = KoinJavaComponent.inject(DataPasserLiveData::class.java)
+
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
 
@@ -33,26 +36,69 @@ class DashboardFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initOnClick()
+        initLiveData()
     }
+
+
+     fun initLiveData(){
+         dataPasserLiveData.value.hasEnroledStatus.observe(viewLifecycleOwner, Observer {
+             if(it.equals("Y")){
+                 dashCardView.visibility = View.VISIBLE
+                 enroledCardView.visibility = View.INVISIBLE
+             }
+         })
+     }
     
      fun initOnClick(){
 
+         renewButton.setOnClickListener {
+             Toast.makeText(context,"This feature will be available soon", Toast.LENGTH_SHORT).show()
+         }
+
+         btUpgrade.setOnClickListener {
+             Toast.makeText(context,"This feature will be available soon", Toast.LENGTH_SHORT).show()
+         }
+
 
          profileButton.setOnClickListener {
-             mFragmentNavigation.pushFragment(ProfileFragment())
+
+             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
+                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+             } else {
+                 mFragmentNavigation.pushFragment(ProfileFragment())
+             //    mFragmentNavigation.pushFragment(CompleteProfileFragment())
+
+             }
+
+
 
          }
 
-         enrolButton.setOnClickListener {
+         btRenew.setOnClickListener {
              mFragmentNavigation.pushFragment(PackageFragment())
          }
          consultDoctorButton.setOnClickListener {
-             mFragmentNavigation.pushFragment(ConsultDoctorFragment())
+
+             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
+                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+             } else {
+                 mFragmentNavigation.pushFragment(ConsultDoctorFragment())
+             }
+
+
+
 
          }
 
          talkToSuppotButton.setOnClickListener {
-             gotoSupportChart()
+
+
+             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
+                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+             } else {
+                 gotoSupportChart()
+             }
+
          }
      }
 
@@ -60,28 +106,52 @@ class DashboardFragment : BaseFragment() {
         (activity as MainActivity).showTablayout()
         (activity as MainActivity).hideToolsBar()
 
+        usernamePersonTV.setText(paperPrefs.getStringPref(PaperPrefs.FIRSTNAME))
+
+
+        if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("Y")){
+
+            dashCardView.visibility = View.VISIBLE
+            enroledCardView.visibility = View.INVISIBLE
+        } else {
+            dashCardView.visibility = View.INVISIBLE
+            enroledCardView.visibility = View.VISIBLE
+        }
+
+         if(paperPrefs.getStringPref(PaperPrefs.IMAGE).isNotEmpty()){
+             Glide.with(this).load(paperPrefs.getStringPref(PaperPrefs.IMAGE)).into(circularImageView);
+         }
+
+        println("what i am expecting "+ paperPrefs.getStringPref(PaperPrefs.DURATION) +" - " +  paperPrefs.getStringPref(PaperPrefs.DAYSLEFT) +" days left")
+
+        tvPackageName.text= paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).capitalize()
+        tvPackageDuration.text = paperPrefs.getStringPref(PaperPrefs.DURATION) +" - " +  paperPrefs.getStringPref(PaperPrefs.DAYSLEFT) +" days left"
+        if(paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).equals("gold")){
+            ivPackageType.setImageResource(R.drawable.golddashimage)
+        } else if(paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).equals("silver")){
+            ivPackageType.setImageResource(R.drawable.silverdashimage)
+        }else if(paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).equals("platinum")){
+            ivPackageType.setImageResource(R.drawable.platinumdashimage)
+        }
+
+
     }
 
 
     fun gotoSupportChart(){
-        val config = FreshchatConfig("3d4f39c6-3189-4605-9d41-db43041b4296", "c31a930b-cb40-4b1e-bf29-4584c4e5b95a")
-        config.setDomain("msdk.freshchat.com")
-        config.setCameraCaptureEnabled(false);
-        config.setGallerySelectionEnabled(false);
-        config.setResponseExpectationEnabled(false);
-
-        val freshchatUser = Freshchat.getInstance(context!!).user
-        freshchatUser.firstName = paperPrefs.getStringPref(PaperPrefs.FIRSTNAME)
-        freshchatUser.lastName =  paperPrefs.getStringPref(PaperPrefs.LASTNAME)
-        freshchatUser.email = paperPrefs.getStringPref(PaperPrefs.EMAIL)
-        freshchatUser.setPhone("+234",  paperPrefs.getStringPref(PaperPrefs.PHONE))
-
-        Freshchat.getInstance(context!!).setUser(freshchatUser).init(config)
 
         Freshchat.showConversations(context!!);
 
     }
 
+    override fun EnrolmentStatus(value: Boolean) {
+        when(value){
+            true->{mFragmentNavigation.pushFragment(PackageFragment())}
+            false->{
+                showError("You have to enrol before you can perform any activity on MYHMO")
+            }
+        }
+    }
 
 
 }

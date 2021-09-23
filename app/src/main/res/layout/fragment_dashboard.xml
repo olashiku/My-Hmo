@@ -15,6 +15,97 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.cardview.widget.CardView
+                android:id="@+id/dashCardView"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:visibility="visible"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView14">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/dash_image_background">
+
+                <Button
+                        android:id="@+id/btUpgrade"
+                        android:layout_width="113dp"
+                        android:layout_height="27dp"
+                        android:layout_marginTop="33dp"
+                        android:background="@drawable/dashboardcurvebgbbutton"
+                        android:fontFamily="@font/poppinsregular"
+                        android:paddingTop="5dp"
+                        android:text="Upgrade Package"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="11sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/renewButton"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPackageDuration" />
+
+                <Button
+                        android:id="@+id/renewButton"
+                        android:layout_width="113dp"
+                        android:layout_height="27dp"
+                        android:layout_marginTop="33dp"
+                        android:background="@drawable/dashboardcurvebgbbutton"
+                        android:fontFamily="@font/poppinsregular"
+                        android:paddingTop="5dp"
+                        android:text="Renew Package"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="11sp"
+                        app:layout_constraintEnd_toStartOf="@+id/btUpgrade"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPackageDuration" />
+
+                <ImageView
+                        android:id="@+id/ivPackageType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="23dp"
+                        android:src="@drawable/golddashimage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                        android:id="@+id/tvPackageName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppinssemibold"
+                        android:text="Gold Package"
+                        android:textColor="#F5FAFF"
+                        app:layout_constraintStart_toEndOf="@+id/ivPackageType"
+                        app:layout_constraintTop_toTopOf="@+id/ivPackageType" />
+
+                <TextView
+                        android:id="@+id/tvPackageDuration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="1dp"
+                        android:fontFamily="@font/poppinsregular"
+                        android:text="Monthly - 31 days left"
+                        android:textColor="#F5FAFF"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@+id/ivPackageType"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPackageName" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
         <Button
                 android:id="@+id/profileButton"
                 android:layout_width="wrap_content"
@@ -52,7 +143,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/circularImageView" />
 
         <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/usernamePersonTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinssemibold"
@@ -63,12 +154,13 @@
                 app:layout_constraintTop_toTopOf="@+id/textView14" />
 
         <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/enroledCardView"
                 android:layout_width="0dp"
                 android:layout_height="160dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
+                android:visibility="invisible"
                 app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -80,32 +172,33 @@
                     android:background="@drawable/dash_image_background">
 
                 <ImageView
-                        android:id="@+id/imageView9"
+                        android:id="@+id/imageView13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:src="@drawable/doc_image_dashoard"
+                        android:src="@drawable/consultdoctorimage"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+
                 <Button
-                        android:id="@+id/enrolButton"
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_marginStart="80dp"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginEnd="80dp"
+                        android:id="@+id/btRenew"
+                        android:layout_width="160dp"
+                        android:layout_height="33dp"
+                        android:layout_marginTop="17dp"
                         android:background="@drawable/dashboardcurvebgbbutton"
                         android:fontFamily="@font/poppinsregular"
                         android:paddingTop="5dp"
                         android:text="Enrol now"
+                        android:textAllCaps="false"
                         android:textColor="@color/colorPrimary"
+                        android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+                        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
@@ -122,7 +215,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:layout_constraintTop_toBottomOf="@+id/enroledCardView"
                 app:text="Consult Doctor"
                 app:text2="Consult a professional doctor" />
 

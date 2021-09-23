@@ -2,7 +2,6 @@ package com.qucoon.myhmo.views.fragment.insidefrgments
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,25 +19,17 @@ import com.qucoon.myhmo.database.PaperPrefs
 import com.qucoon.myhmo.database.getStringPref
 import com.qucoon.myhmo.dataclasses.SettingsClass
 import com.qucoon.myhmo.popups.ContactusDialogFragment
+import com.qucoon.myhmo.popups.utilitypupups.CheckEnrolmentDialogFragment
 import com.qucoon.myhmo.popups.utilitypupups.SignoutBottomSheetDialogFragment
 import com.qucoon.myhmo.views.activity.MainActivity
 import com.qucoon.myhmo.views.fragment.insidefrgments.settings.ChangePasswordFragment
 import com.qucoon.myhmo.views.fragment.insidefrgments.settings.ManageAccountFragment
-import com.qucoon.myhmo.views.fragment.insidefrgments.dashoard.EnrolUserFragment
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_profile2.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- *
- */
-class SettingsFragment : BaseFragment() {
+
+class SettingsFragment: BaseFragment(),CheckEnrolmentDialogFragment.EnrolmentCallback {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -86,7 +77,13 @@ class SettingsFragment : BaseFragment() {
              { position ->
                  val item = list1[position]
                  when(item.name){
-                     "Manage Account" ->{ manageAccount()}
+                     "Manage Account" ->{
+                         if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
+                             mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+                         } else {
+                             manageAccount()
+                         }
+                     }
                      "Change Password" ->{ mFragmentNavigation.pushFragment(ChangePasswordFragment())}
                      "Log Out" ->{ mFragmentNavigation.openDialogFragment(SignoutBottomSheetDialogFragment()
                      )}
@@ -156,15 +153,16 @@ class SettingsFragment : BaseFragment() {
 
 
      fun manageAccount(){
-
-        mFragmentNavigation.pushFragment(ManageAccountFragment())
-
+         showError("Feature will be available soon. ")
+    //    mFragmentNavigation.pushFragment(ManageAccountFragment())
      }
+
+
     fun gotoSupportChart(){
         val config = FreshchatConfig("3d4f39c6-3189-4605-9d41-db43041b4296", "c31a930b-cb40-4b1e-bf29-4584c4e5b95a")
         config.setDomain("msdk.freshchat.com")
         config.setCameraCaptureEnabled(false);
-        config.setGallerySelectionEnabled(false);
+      //  config.setGallerySelectionEnabled(false);
         config.setResponseExpectationEnabled(false);
 
         val freshchatUser = Freshchat.getInstance(context!!).user
@@ -174,9 +172,20 @@ class SettingsFragment : BaseFragment() {
         freshchatUser.setPhone("+234",  paperPrefs.getStringPref(PaperPrefs.PHONE))
 
         Freshchat.getInstance(context!!).setUser(freshchatUser).init(config)
-
         Freshchat.showConversations(context!!);
-
     }
+
+    override fun EnrolmentStatus(value: Boolean) {
+    }
+
+//    override fun EnrolmentStatus(value: Boolean) {
+//        when(value){
+//            true->{mFragmentNavigation.pushFragment(PackageFragment())}
+//            false->{
+//                showError("You have to enrol before you can perform any activity on MYHMO")
+//            }
+//        }    }
+
+
 }
 

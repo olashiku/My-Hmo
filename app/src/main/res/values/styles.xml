@@ -9,6 +9,7 @@
         <item name="actionBarTheme">@style/ThemeOverlay.ActionBar</item>
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+
     </style>
 
     <style name="ThemeOverlay.ActionBar" parent="">
@@ -17,7 +18,19 @@
     </style>
 
 
+    <style name="MyCustomTheme" parent="Theme.Freshchat.Light.DarkActionBar">
+        <item name="freshchatChannelNameTextStyle">@style/CustomChannelNameTextStyle</item>
+    </style>
 
+    <style name="CustomChannelNameTextStyle" parent="Widget.Freshchat.ChannelName">
+        <item name="android:textAppearance">@style/MyCustomTextAppearance</item>
+    </style>
+
+    <style name="Theme.Freshchat.SelectedTheme" parent="MyCustomTheme" />
+
+    <style name="MyCustomTextAppearance" parent="android:TextAppearance">
+        <item name="fontFamily">@font/poppinsmedium</item>
+    </style>
 
 
     <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
@@ -67,5 +80,49 @@
             parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/rounded_dialog</item>
     </style>
+
+    <style name="MyDatePickerStyle" parent="@android:style/Widget.Material.DatePicker" >
+        <item name="android:colorControlActivated">#DB495A</item>
+        <item name="android:datePickerMode">spinner</item>
+        <item name="android:calendarViewShown">false</item>
+    </style>
+
+
+    <style name="ExposedDropdownMenu"
+            parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <!-- color of box ONLY, not dropdown -->
+        <item name="boxBackgroundColor">@color/white</item>
+        <!-- the box outline color depending on state
+             (default, enabled, hovered, focused, but NOT error) -->
+        <item name="boxStrokeColor">@color/grey</item>
+        <!-- the box outline color just for errors -->
+        <item name="boxStrokeErrorColor">@android:color/holo_red_dark</item>
+        <!-- enable 8dp space below the box for error message -->
+        <item name="errorEnabled">true</item>
+        <!-- the hint INSIDE the box, before focusing the TextInputEditText -->
+        <item name="android:textColorHint">@color/colorPrimary</item>
+        <!-- the hint ON TOP of the box, when the TextInputEditText is focused -->
+        <item name="hintTextColor">@color/colorPrimary</item>
+        <!-- Gain access to additional styling for the child AutoCompleteTextView,
+             which includes this spinner's dropdown/popup menu -->
+    </style>
+
+
+<!--    <style name="AppTheme.ExposedDropdownMenu.AutoCompleteStyle">-->
+<!--        &lt;!&ndash; restore padding to sanity &ndash;&gt;-->
+<!--        <item name="android:padding">16dp</item>-->
+<!--        <item name="android:textColor">@color/colorOnSurface</item>-->
+<!--        <item name="android:textSize">20sp</item>-->
+<!--    </style>-->
+
+    <!-- style for material spinner 'item' layout -->
+<!--    <style name="MaterialSpinnerItem" parent="Widget.AppCompat.TextView">-->
+<!--        <item name="android:color">@color/black</item>-->
+<!--        <item name="android:textColor">@color/colorOnSurface</item>-->
+<!--        <item name="android:textSize">20sp</item>-->
+<!--        <item name="android:ellipsize">end</item>-->
+<!--        <item name="android:maxLines">1</item>-->
+<!--        <item name="android:padding">16dp</item>-->
+<!--    </style>-->
 
 </resources>
