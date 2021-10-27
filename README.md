@@ -1,2 +1,2 @@
-# myhmo
-An app that allows doctors to connect to patients using MVVM, Retrofit, Koin and other frame works with the exception of web socket technology
+# MYHMO
+A simple application using MVVM Architectural pattern, Retrofit, Koin Dependency Injection, Extension Functions, Room Database and  Generics.
