@@ -27,17 +27,6 @@ import kotlinx.android.synthetic.main.fragment_profile2.*
 import java.io.Serializable
 import java.text.FieldPosition
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CategoryDisplayFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CategoryDisplayFragment : BaseFragment() {
 
     val type:String by argument("type")
@@ -172,20 +161,6 @@ class CategoryDisplayFragment : BaseFragment() {
 
                 }
 
-
-
-
-
-
-//                mFragmentNavigation.pushFragment(ConfirmationFragment().withArguments(
-//                    "package" to type,
-//                    "duration" to duration,
-//                    "subscriber" to Utils.getTetxt(etNumberOfPeople),
-//                    "amount" to  etAmount.text.toString(),
-//                    "type" to type,
-//                    "subtype" to subtype
-//
-//                ))
             } else {
                 Toast.makeText(context,"Please enter a number to proced", Toast.LENGTH_SHORT).show()
             }

@@ -1,19 +1,27 @@
 package com.qucoon.royalexchange.ui.base
 
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.provider.MediaStore
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.neptune.utils.Utils
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ncapdevi.fragnav.FragNavController
 import com.ncapdevi.fragnav.FragNavLogger
 import com.ncapdevi.fragnav.FragNavTransactionOptions
+import com.qucoon.myhmo.BuildConfig
 import com.qucoon.myhmo.R
-import com.qucoon.myhmo.database.PaperPrefs
+import com.qucoon.myhmo.livedata.DataPasserLiveData
+import com.yalantis.ucrop.UCrop
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -25,7 +33,8 @@ import kotlin.coroutines.CoroutineContext
 open class BaseActivity: AppCompatActivity(), BaseFragment.FragmentNavigation, FragNavController.TransactionListener,
     CoroutineScope {
 
-   //  val backgroundRepository:BackgroundRepository by inject()
+
+
 
     lateinit var basefragNavController: FragNavController
      var backgroundJobs = Job()
@@ -87,12 +96,12 @@ open class BaseActivity: AppCompatActivity(), BaseFragment.FragmentNavigation, F
         basefragNavController.switchTab(index)
     }
 
-    override fun openBottomSheet(bottomSheetFragment: BottomSheetDialogFragment) {
+    override fun openBottomSheet(bottomSheetDialogFragment: BottomSheetDialogFragment) {
         try{
-            basefragNavController.showDialogFragment(bottomSheetFragment)
+            basefragNavController.showDialogFragment(bottomSheetDialogFragment)
         }catch (ex: Exception){
             basefragNavController.clearDialogFragment()
-            basefragNavController.showDialogFragment(bottomSheetFragment)
+            basefragNavController.showDialogFragment(bottomSheetDialogFragment)
         }    }
 
     override fun clearStack() {
@@ -142,8 +151,6 @@ open class BaseActivity: AppCompatActivity(), BaseFragment.FragmentNavigation, F
         }
         return false
     }
-
-
 
 
 

@@ -8,11 +8,12 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="com.example.googlemaps.permission.MAPS_RECEIVE"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 
     <application
             android:name=".MyCustomApp"
-            android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
@@ -22,10 +23,12 @@
         <activity android:name=".views.activity.MainActivity">
         </activity>
         <activity
+                android:exported="true"
                 android:name=".views.activity.OutsideActivity"
                 android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
         <activity
+                android:exported="true"
                 android:name=".views.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -33,9 +36,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+                android:exported="true"
+                android:name="com.yalantis.ucrop.UCropActivity"
+                android:screenOrientation="unspecified"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
         <service
                 android:name=".utils.MyFirebaseMessagingService"
-                android:exported="false">
+                android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
@@ -55,15 +64,17 @@
                 android:name="com.google.firebase.messaging.default_notification_color"
                 android:resource="@color/colorPrimary"/>
 
-<!--        <provider-->
-<!--                android:name="androidx.core.content.FileProvider"-->
-<!--                android:authorities="com.example.demoapp.provider"-->
-<!--                android:exported="false"-->
-<!--                android:grantUriPermissions="true">-->
-<!--            <meta-data-->
-<!--                    android:name="android.support.FILE_PROVIDER_PATHS"-->
-<!--                    android:resource="@xml/freshchat_file_provider_paths" />-->
-<!--        </provider>-->
+        <provider
+                android:name="androidx.core.content.FileProvider"
+                tools:replace="android:authorities"
+                android:authorities="${applicationId}.provider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    tools:replace="android:resource"
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/provider_paths"/>
+        </provider>
 
     </application>
 

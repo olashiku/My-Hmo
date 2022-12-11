@@ -20,16 +20,7 @@ import kotlinx.android.synthetic.main.fragment_password.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PackageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PackageFragment : BaseFragment() {
 
     val firstname :String by argument("firstname")
@@ -62,14 +53,9 @@ class PackageFragment : BaseFragment() {
      }
 
     fun initView(){
-      //  (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Verification Code")
-
-        otp_view.setOtpCompletionListener {
-            Log.v("PackageFragment","View Completed")
-        }
-
-
+        otp_view.setOtpCompletionListener {}
     }
+
      fun initOnClick(){
          passwordNextButtonOTP.setOnClickListener{
              if(otp_view.length().equals(6)){
@@ -85,10 +71,7 @@ class PackageFragment : BaseFragment() {
      fun verifyEmail(){
          outsideViewModel.verifyEmail(etEmail,otp_view.text.toString(),uniqueref)
          outsideViewModel.defaultResponse.observe(viewLifecycleOwner, Observer {
-
              registerUser()
-
-
          })
      }
 

@@ -20,7 +20,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class ValidateOTPFragment : BaseFragment() {
 
     val outsideViewModel: OutsideViewModel by viewModel()
-
     val uniqueref: String by argument("uniqueref")
     val email:String by argument("email")
 
@@ -29,13 +28,11 @@ class ValidateOTPFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_validate_o_t_p, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
         initOnClick()
         initViewModel()
     }
@@ -50,9 +47,7 @@ class ValidateOTPFragment : BaseFragment() {
         })
     }
 
-    fun initView(){
-    //    (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Verification Code")
-    }
+
     fun initOnClick(){
         validOtpNextButton.setOnClickListener{
 
@@ -62,9 +57,7 @@ class ValidateOTPFragment : BaseFragment() {
                 showError("Insert OTP sent to your email")
             }
         }
-
         backButtonOTP1.setOnClickListener { mFragmentNavigation.popFragment() }
-
     }
 
      fun authPassword(){

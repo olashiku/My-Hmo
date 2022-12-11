@@ -42,7 +42,6 @@ class LoginFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
@@ -55,7 +54,6 @@ class LoginFragment : BaseFragment() {
      fun initView(){
          setUpObservers(outsideViewModel)
          (activity as  OutsideActivity).hideToolsBar()
-         etFirstAgentName.setText(paperPrefs.getStringPref(PaperPrefs.EMAIL))
          watchTexts()
      }
 
@@ -75,8 +73,6 @@ class LoginFragment : BaseFragment() {
             if(Validator.isValidEmail(etFirstAgentName) && Validator.isValidPassword2(etPassword)){
                 outsideViewModel.loginUser(etPassword.getString(),etFirstAgentName.getString())
                 outsideViewModel.loginResponse.observeChange(viewLifecycleOwner){
-
-
                     val myIntent = Intent(activity, MainActivity::class.java)
                     startActivity(myIntent)
                 }

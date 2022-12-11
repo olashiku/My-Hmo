@@ -24,13 +24,12 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile2.*
 
 
-class ProfileFragment :   BaseFragment() {
+class ProfileFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile2, container, false)
     }
 
@@ -42,96 +41,101 @@ class ProfileFragment :   BaseFragment() {
 
     }
 
-     fun initView(){
+    fun initView() {
 
-         (activity as MainActivity).hideTablayout()
-         planInformationRecyler.setNestedScrollingEnabled(false);
-         contactInformationRecycler.setNestedScrollingEnabled(false);
-         personalinfoRecycler.setNestedScrollingEnabled(false);
+        (activity as MainActivity).hideTablayout()
+        planInformationRecyler.setNestedScrollingEnabled(false);
+        contactInformationRecycler.setNestedScrollingEnabled(false);
+        personalinfoRecycler.setNestedScrollingEnabled(false);
 
-         Glide.with(this).load(paperPrefs.getStringPref(PaperPrefs.IMAGE)).into(ImageData);
+        Glide.with(this).load(paperPrefs.getStringPref(PaperPrefs.IMAGE)).into(ImageData);
+        initpersonalinformaition()
+        initContactinformation()
+        initplanInformation()
 
+    }
 
-         initpersonalinformaition()
-         initContactinformation()
-         initplanInformation()
-
-     }
-
-     fun initplanInformation(){
+    fun initplanInformation() {
 
 
-         val list = listOf<ProfileDataClass>(
-             ProfileDataClass("Package",paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE)),
-             ProfileDataClass("Plan Type",paperPrefs.getStringPref(PaperPrefs.SUBTYPE)),
-             ProfileDataClass("Duration",paperPrefs.getStringPref(PaperPrefs.DURATION))
-             )
+        val list = listOf<ProfileDataClass>(
+            ProfileDataClass("Package", paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE)),
+            ProfileDataClass("Plan Type", paperPrefs.getStringPref(PaperPrefs.SUBTYPE)),
+            ProfileDataClass("Duration", paperPrefs.getStringPref(PaperPrefs.DURATION))
+        )
 
-         planInformationRecyler.updateRecycler(context!!, list, R.layout.myprofileitemlayout, listOf(R.id.title, R.id.message),
-             { innerViews, position ->
-                 val title = innerViews[R.id.title] as TextView
-                 val message = innerViews[R.id.message] as TextView
+        planInformationRecyler.updateRecycler(context!!,
+            list,
+            R.layout.myprofileitemlayout,
+            listOf(R.id.title, R.id.message),
+            { innerViews, position ->
+                val title = innerViews[R.id.title] as TextView
+                val message = innerViews[R.id.message] as TextView
 
-                 title.text = list[position].title
-                 message.text = list[position].name
-             },
-             { position ->
+                title.text = list[position].title
+                message.text = list[position].name
+            },
+            { position ->
 
-             })
-     }
-
-
-
-
-     fun initContactinformation(){
+            })
+    }
 
 
-         val list = listOf<ProfileDataClass>(
-             ProfileDataClass("Address",paperPrefs.getStringPref(PaperPrefs.ADDRESS)),
-             ProfileDataClass("Phone Number (Home)",paperPrefs.getStringPref(PaperPrefs.PHONE)))
-
-         contactInformationRecycler.updateRecycler(context!!, list, R.layout.myprofileitemlayout, listOf(R.id.title, R.id.message),
-             { innerViews, position ->
-                 val title = innerViews[R.id.title] as TextView
-                 val message = innerViews[R.id.message] as TextView
-
-                 title.text = list[position].title
-                 message.text = list[position].name
-             },
-             { position ->
-
-             })
+    fun initContactinformation() {
 
 
-     }
+        val list = listOf<ProfileDataClass>(
+            ProfileDataClass("Address", paperPrefs.getStringPref(PaperPrefs.ADDRESS)),
+            ProfileDataClass("Phone Number (Home)", paperPrefs.getStringPref(PaperPrefs.PHONE))
+        )
+        contactInformationRecycler.updateRecycler(context!!,
+            list,
+            R.layout.myprofileitemlayout,
+            listOf(R.id.title, R.id.message),
+            { innerViews, position ->
+                val title = innerViews[R.id.title] as TextView
+                val message = innerViews[R.id.message] as TextView
 
-     fun initpersonalinformaition(){
+                title.text = list[position].title
+                message.text = list[position].name
+            },
+            { position ->
 
-         val list = listOf<ProfileDataClass>(
-             ProfileDataClass("Sex",paperPrefs.getStringPref(PaperPrefs.GENDER)),
-             ProfileDataClass("Email",paperPrefs.getStringPref(PaperPrefs.EMAIL)),
-             ProfileDataClass("HMO ID","QCN/10008/A"),
-             ProfileDataClass("Date of Birth",paperPrefs.getStringPref(PaperPrefs.DOB)),
-             ProfileDataClass("Email",paperPrefs.getStringPref(PaperPrefs.EMAIL))
-             )
+            })
 
-         personalinfoRecycler.updateRecycler(context!!, list, R.layout.myprofileitemlayout, listOf(R.id.title, R.id.message),
-             { innerViews, position ->
-                 val title = innerViews[R.id.title] as TextView
-                 val message = innerViews[R.id.message] as TextView
 
-                 title.text = list[position].title
-                 message.text = list[position].name
-             },
-             { position ->
+    }
 
-             })
+    fun initpersonalinformaition() {
 
-     }
+        val list = listOf<ProfileDataClass>(
+            ProfileDataClass("Sex", paperPrefs.getStringPref(PaperPrefs.GENDER)),
+            ProfileDataClass("Email", paperPrefs.getStringPref(PaperPrefs.EMAIL)),
+            ProfileDataClass("HMO ID", "QCN/10008/A"),
+            ProfileDataClass("Date of Birth", paperPrefs.getStringPref(PaperPrefs.DOB)),
+            ProfileDataClass("Email", paperPrefs.getStringPref(PaperPrefs.EMAIL))
+        )
 
-     fun initOnClick(){
-         backButtonProfile.setOnClickListener {
-             mFragmentNavigation.popFragment()
-         }
-     }
+        personalinfoRecycler.updateRecycler(context!!,
+            list,
+            R.layout.myprofileitemlayout,
+            listOf(R.id.title, R.id.message),
+            { innerViews, position ->
+                val title = innerViews[R.id.title] as TextView
+                val message = innerViews[R.id.message] as TextView
+
+                title.text = list[position].title
+                message.text = list[position].name
+            },
+            { position ->
+
+            })
+
+    }
+
+    fun initOnClick() {
+        backButtonProfile.setOnClickListener {
+            mFragmentNavigation.popFragment()
+        }
+    }
 }

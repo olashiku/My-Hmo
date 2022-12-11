@@ -19,22 +19,8 @@ import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_paystack.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PaystackFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PaystackFragment : BaseFragment() {
-
-
     val dashboardViewModel: DashboardViewModel by viewModel()
-
-
     val paystackurl: String by argument("paystackurl")
     val packagee:String  by argument("package")
     val duration:String  by argument("duration")
@@ -45,11 +31,6 @@ class PaystackFragment : BaseFragment() {
     val reference:String by argument("reference")
     val schedulapayment:String by argument("schedulapayment")
     val subscriber_info:List<BeneficiaryDetails> by argument("subscriber_info")
-
-
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

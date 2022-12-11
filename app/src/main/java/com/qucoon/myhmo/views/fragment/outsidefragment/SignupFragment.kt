@@ -16,15 +16,7 @@ import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_signup.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- *
- */
 class SignupFragment : BaseFragment() {
 
     override fun onCreateView(
@@ -37,10 +29,8 @@ class SignupFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
         initOnClick()
         watchInputFields()
-
     }
 
      fun watchInputFields(){
@@ -71,9 +61,5 @@ class SignupFragment : BaseFragment() {
              mFragmentNavigation.popFragment()
          }
 
-     }
-
-     fun initView(){
-      //   (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Personal Details")
      }
 }

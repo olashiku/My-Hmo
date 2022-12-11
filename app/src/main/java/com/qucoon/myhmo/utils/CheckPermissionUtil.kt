@@ -1,7 +1,6 @@
 package com.qucoon.keystonemobile.utils
 
 import android.Manifest
-import android.Manifest.permission
 import android.Manifest.permission.*
 import android.app.Activity
 import android.content.Context
@@ -24,6 +23,10 @@ object CheckPermissionUtil {
 
     fun hasLocationPermission(activity: Activity):Boolean{
         return   PermissionUtil.hasPermission(activity,LOCATION_HARDWARE)
+    }
+
+    fun hasCameraPermission(activity: Activity):Boolean{
+        return   PermissionUtil.hasPermission(activity, CAMERA)
     }
     private val LOCATION_PERMISSION_REQ_CODE = 200
     private val WRITE_SD_REQ_CODE = 201

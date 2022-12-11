@@ -18,7 +18,11 @@ class EnrolUserFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_enrol_user, container, false)
     }
@@ -31,26 +35,31 @@ class EnrolUserFragment : Fragment() {
     }
 
 
-     fun initOnClick(){
+    fun initOnClick() {
 
-         enrolmentSegment.addOnSegmentClickListener {
-             when(it.column){
-                 0->{Toast.makeText(context,"0",Toast.LENGTH_SHORT).show() }
-                 1->{Toast.makeText(context,"1",Toast.LENGTH_SHORT).show() }
-                 2->{Toast.makeText(context,"2",Toast.LENGTH_SHORT).show() }
-             }
+        enrolmentSegment.addOnSegmentClickListener {
+            when (it.column) {
+                0 -> {
+                    Toast.makeText(context, "0", Toast.LENGTH_SHORT).show()
+                }
+                1 -> {
+                    Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
+                }
+                2 -> {
+                    Toast.makeText(context, "2", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-         }
-     }
+        }
+    }
 
 
+    fun initView() {
+        (activity as MainActivity).hideTablayout()
+        (activity as MainActivity).setActoonBarTitle("Enrolment")
 
-     fun initView(){
-         (activity as MainActivity).hideTablayout()
-         (activity as MainActivity).setActoonBarTitle("Enrolment")
-
-         val typeface = ResourcesCompat.getFont(context!!, R.font.poppinsfont)
-         enrolmentSegment.setTypeFace(typeface)
-         enrolmentSegment.setSelectedSegment(0)
-     }
+        val typeface = ResourcesCompat.getFont(context!!, R.font.poppinsfont)
+        enrolmentSegment.setTypeFace(typeface)
+        enrolmentSegment.setSelectedSegment(0)
+    }
 }

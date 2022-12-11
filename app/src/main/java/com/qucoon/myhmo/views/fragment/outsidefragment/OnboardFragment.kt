@@ -87,6 +87,7 @@ class OnboardFragment : BaseFragment(), ViewPager.OnPageChangeListener {
     }
 
     fun initViewPager(){
+
         val list= listOf<OnboardDataClass>(
             OnboardDataClass(
                 R.drawable.boardimage1,

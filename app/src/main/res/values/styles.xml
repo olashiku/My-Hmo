@@ -9,7 +9,6 @@
         <item name="actionBarTheme">@style/ThemeOverlay.ActionBar</item>
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
-
     </style>
 
     <style name="ThemeOverlay.ActionBar" parent="">
@@ -18,15 +17,10 @@
     </style>
 
 
-    <style name="MyCustomTheme" parent="Theme.Freshchat.Light.DarkActionBar">
-        <item name="freshchatChannelNameTextStyle">@style/CustomChannelNameTextStyle</item>
-    </style>
 
-    <style name="CustomChannelNameTextStyle" parent="Widget.Freshchat.ChannelName">
-        <item name="android:textAppearance">@style/MyCustomTextAppearance</item>
-    </style>
 
-    <style name="Theme.Freshchat.SelectedTheme" parent="MyCustomTheme" />
+
+
 
     <style name="MyCustomTextAppearance" parent="android:TextAppearance">
         <item name="fontFamily">@font/poppinsmedium</item>

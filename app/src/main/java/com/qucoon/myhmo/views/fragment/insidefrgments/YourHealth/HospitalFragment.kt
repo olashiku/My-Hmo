@@ -30,58 +30,61 @@ class HospitalFragment : BaseFragment() {
     }
 
 
-     fun initOnClick(){
-         BackButtonHospital.setOnClickListener { mFragmentNavigation.popFragment() }
-     }
+    fun initOnClick() {
+        BackButtonHospital.setOnClickListener { mFragmentNavigation.popFragment() }
+    }
 
-     fun initView(){
-         (activity as MainActivity).hideTablayout()
+    fun initView() {
+        (activity as MainActivity).hideTablayout()
 
-          val list= listOf<HospitalData>(
-              HospitalData("Raddison Blue Hospital","12 broad street lagos ","Lagos"),
-              HospitalData("Abbot Clinic","1 apapa road lagos ","Lagos"),
-              HospitalData("Kelin heights Hospotal","3 masha road lagos ","Lagos"),
-              HospitalData("Irish Hospital lagos","13 asajon street, sangotedo lagos","Lagos"),
-              HospitalData("Kelin heights Hospotal","3 masha road lagos ","Lagos"),
-              HospitalData("Irish Hospital lagos","13 asajon street, sangotedo lagos","Lagos"),
-              HospitalData("Kelin heights Hospotal","3 masha road lagos ","Lagos"),
-              HospitalData("Irish Hospital lagos","13 asajon street, sangotedo lagos","Lagos"),
-              HospitalData("Kelin heights Hospotal","3 masha road lagos ","Lagos"),
-              HospitalData("Irish Hospital lagos","13 asajon street, sangotedo lagos","Lagos"),
-              HospitalData("Kelin heights Hospotal","3 masha road lagos ","Lagos"),
-              HospitalData("Irish Hospital lagos","13 asajon street, sangotedo lagos","Lagos"),
-              HospitalData("Kelin heights Hospotal","3 masha road lagos ","Lagos"),
-              HospitalData("Irish Hospital lagos","13 asajon street, sangotedo lagos","Lagos"),
-              HospitalData("Kelin heights Hospotal","3 masha road lagos ","Lagos"),
-              HospitalData("Irish Hospital lagos","13 asajon street, sangotedo lagos","Lagos"),
-              HospitalData("Kelin heights Hospotal","3 masha road lagos ","Lagos"),
-              HospitalData("Irish Hospital lagos","13 asajon street, sangotedo lagos","Lagos"),
-              HospitalData("Appitos  Specialist Hospital","98 karimu street lagos","Lagos")
-              )
+        val list = listOf<HospitalData>(
+            HospitalData("Raddison Blue Hospital", "12 broad street lagos ", "Lagos"),
+            HospitalData("Abbot Clinic", "1 apapa road lagos ", "Lagos"),
+            HospitalData("Kelin heights Hospotal", "3 masha road lagos ", "Lagos"),
+            HospitalData("Irish Hospital lagos", "13 asajon street, sangotedo lagos", "Lagos"),
+            HospitalData("Kelin heights Hospotal", "3 masha road lagos ", "Lagos"),
+            HospitalData("Irish Hospital lagos", "13 asajon street, sangotedo lagos", "Lagos"),
+            HospitalData("Kelin heights Hospotal", "3 masha road lagos ", "Lagos"),
+            HospitalData("Irish Hospital lagos", "13 asajon street, sangotedo lagos", "Lagos"),
+            HospitalData("Kelin heights Hospotal", "3 masha road lagos ", "Lagos"),
+            HospitalData("Irish Hospital lagos", "13 asajon street, sangotedo lagos", "Lagos"),
+            HospitalData("Kelin heights Hospotal", "3 masha road lagos ", "Lagos"),
+            HospitalData("Irish Hospital lagos", "13 asajon street, sangotedo lagos", "Lagos"),
+            HospitalData("Kelin heights Hospotal", "3 masha road lagos ", "Lagos"),
+            HospitalData("Irish Hospital lagos", "13 asajon street, sangotedo lagos", "Lagos"),
+            HospitalData("Kelin heights Hospotal", "3 masha road lagos ", "Lagos"),
+            HospitalData("Irish Hospital lagos", "13 asajon street, sangotedo lagos", "Lagos"),
+            HospitalData("Kelin heights Hospotal", "3 masha road lagos ", "Lagos"),
+            HospitalData("Irish Hospital lagos", "13 asajon street, sangotedo lagos", "Lagos"),
+            HospitalData("Appitos  Specialist Hospital", "98 karimu street lagos", "Lagos")
+        )
 
-          updateRecycler(list)
-     }
+        updateRecycler(list)
+    }
 
 
-     fun updateRecycler(list: List<HospitalData>) {
+    fun updateRecycler(list: List<HospitalData>) {
 
-         hospitalRecycler.updateRecycler(context!!, list, R.layout.hospital_layout, listOf(R.id.hospitalName, R.id.hospitalAddress),
-             { innerViews, position ->
-                 val hospitalName = innerViews[R.id.hospitalName] as TextView
-                 val hospitalAddress = innerViews[R.id.hospitalAddress] as TextView
+        hospitalRecycler.updateRecycler(context!!,
+            list,
+            R.layout.hospital_layout,
+            listOf(R.id.hospitalName, R.id.hospitalAddress),
+            { innerViews, position ->
+                val hospitalName = innerViews[R.id.hospitalName] as TextView
+                val hospitalAddress = innerViews[R.id.hospitalAddress] as TextView
 
-                 hospitalName.text = list[position].hospitalName
-                 hospitalAddress.text = list[position].hospitalAddress
-             },
-             { position ->
+                hospitalName.text = list[position].hospitalName
+                hospitalAddress.text = list[position].hospitalAddress
+            },
+            { position ->
 
-             })
+            })
 
-     }
+    }
 }
 
- data class HospitalData(
-     var hospitalName:String,
-     var hospitalAddress:String,
-     var hospitalLocation:String
- )
+data class HospitalData(
+    var hospitalName: String,
+    var hospitalAddress: String,
+    var hospitalLocation: String
+)

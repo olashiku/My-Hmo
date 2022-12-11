@@ -39,39 +39,71 @@ class HealthTipsFragment : BaseFragment() {
         insertValues()
     }
 
-     fun initView(){
-         (activity as MainActivity).hideTablayout()
+    fun initView() {
+        (activity as MainActivity).hideTablayout()
 
-     }
+    }
 
-     fun initOnClick(){
-         backButtonHealthTips.setOnClickListener { mFragmentNavigation.popFragment() }
-     }
+    fun initOnClick() {
+        backButtonHealthTips.setOnClickListener { mFragmentNavigation.popFragment() }
+    }
 
 
-     fun insertValues(){
-          val list = listOf<HealthData>(
-              HealthData("https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png","Feel Good About Yourself Today","Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
-                      "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." +"" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""),
-              HealthData("https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png","Feel Good About Yourself Today","Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
-                      "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." +"" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""),
-              HealthData("https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png","Feel Good About Yourself Today","Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
-                      "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." +"" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""),
-              HealthData("https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png","Feel Good About Yourself Today","Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
-                      "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." +"" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""),
-              HealthData("https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png","Feel Good About Yourself Today","Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
-                      "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." +"" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""),
-              HealthData("https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png","Feel Good About Yourself Today","Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
-                      "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." +"" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""),
-         HealthData("https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png","Feel Good About Yourself Today","Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
-                 "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." +"" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""))
-          updateRecycler(list)
-     }
+    fun insertValues() {
+        val list = listOf<HealthData>(
+            HealthData(
+                "https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png",
+                "Feel Good About Yourself Today",
+                "Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
+                        "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." + "" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""
+            ),
+            HealthData(
+                "https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png",
+                "Feel Good About Yourself Today",
+                "Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
+                        "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." + "" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""
+            ),
+            HealthData(
+                "https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png",
+                "Feel Good About Yourself Today",
+                "Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
+                        "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." + "" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""
+            ),
+            HealthData(
+                "https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png",
+                "Feel Good About Yourself Today",
+                "Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
+                        "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." + "" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""
+            ),
+            HealthData(
+                "https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png",
+                "Feel Good About Yourself Today",
+                "Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
+                        "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." + "" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""
+            ),
+            HealthData(
+                "https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png",
+                "Feel Good About Yourself Today",
+                "Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
+                        "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." + "" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""
+            ),
+            HealthData(
+                "https://myhmoimagebucket.s3.us-east-2.amazonaws.com/1_HEoLBLidT2u4mhJ0oiDgig.png",
+                "Feel Good About Yourself Today",
+                "Be sure the people around you make you feel good about you -- no matter what your size or health condition. In addition, if close friends encourage you to smoke, overeat, or drink too much, find some new friends who have good health habits and also want a healthier you.\n" +
+                        "" + "Elaine Magee, MPH, Rd, author of more than 20 books, says don't get hung up on pounds or what size dress you are wearing." + "" + "\"Instead, focus on being healthy from the inside out,\" Magee says. \"Eat well, and exercise regularly. And remember that you can be sexy and look and feel fabulous and not be thin.\""
+            )
+        )
+        updateRecycler(list)
+    }
 
 
     fun updateRecycler(list: List<HealthData>) {
 
-        tipsRecycler.updateRecycler(context!!, list, R.layout.health_tips_layout, listOf(R.id.imageview, R.id.tipTitle, R.id.tipBody),
+        tipsRecycler.updateRecycler(context!!,
+            list,
+            R.layout.health_tips_layout,
+            listOf(R.id.imageview, R.id.tipTitle, R.id.tipBody),
             { innerViews, position ->
                 val image = innerViews[R.id.imageview] as ImageView
                 val tipTitle = innerViews[R.id.tipTitle] as TextView
@@ -81,13 +113,15 @@ class HealthTipsFragment : BaseFragment() {
                 tipTitle.text = list[position].title
                 tipBody.text = list[position].description
 
-                Glide.with(this).load( list[position].image).into(image);
+                Glide.with(this).load(list[position].image).into(image);
 
             },
             { position ->
-                mFragmentNavigation.pushFragment(HealthTipsDisplayFragment().withArguments(
-                    "HealthData" to list[position]
-                ))
+                mFragmentNavigation.pushFragment(
+                    HealthTipsDisplayFragment().withArguments(
+                        "HealthData" to list[position]
+                    )
+                )
             })
 
     }
@@ -96,7 +130,7 @@ class HealthTipsFragment : BaseFragment() {
 }
 
 data class HealthData(
-    var image:String,
-    var title:String,
-    var description:String
-):Serializable
+    var image: String,
+    var title: String,
+    var description: String
+) : Serializable

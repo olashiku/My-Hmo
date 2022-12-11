@@ -16,8 +16,8 @@ import kotlinx.android.synthetic.main.fragment_inside_success.*
 
 class InsideSuccessFragment : BaseFragment() {
 
-    val title:String by argument("title")
-    val message:String by argument("message")
+    val title: String by argument("title")
+    val message: String by argument("message")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,14 +33,14 @@ class InsideSuccessFragment : BaseFragment() {
         initView()
     }
 
-    fun initOnClick(){
+    fun initOnClick() {
         createUserButton.setOnClickListener {
-          mFragmentNavigation.clearStack()
+            mFragmentNavigation.clearStack()
 
         }
     }
 
-    fun initView(){
+    fun initView() {
         (activity as MainActivity?)!!.hideToolsBar()
         tvTitle.text = title
         tvMessage.text = message

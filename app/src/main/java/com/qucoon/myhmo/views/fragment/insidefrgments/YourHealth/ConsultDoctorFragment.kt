@@ -6,25 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.example.neptune.utils.getString
-import com.freshchat.consumer.sdk.Freshchat
-import com.freshchat.consumer.sdk.FreshchatMessage
+//import com.freshchat.consumer.sdk.Freshchat
+//import com.freshchat.consumer.sdk.FreshchatMessage
 import com.qucoon.myhmo.R
 import com.qucoon.myhmo.database.PaperPrefs
 import com.qucoon.myhmo.database.getStringPref
 import com.qucoon.myhmo.views.activity.MainActivity
 import com.qucoon.myhmo.views.fragment.insidefrgments.YourHealth.consultation.ConsultConfirmationFragment
 import com.qucoon.royalexchange.ui.base.BaseFragment
+import com.zoho.livechat.android.ZohoLiveChat
+import com.zoho.salesiqembed.ZohoSalesIQ
 import kotlinx.android.synthetic.main.fragment_consult_doctor.*
 
 
 class ConsultDoctorFragment : BaseFragment() {
 
 
-    var selecedItem =""
+    var selecedItem = ""
 
     private val benefList = arrayOf("My self")
     private val symptomsList = arrayOf("Headache", "Back Pains", "Stomach Pain")
-
 
 
     override fun onCreateView(
@@ -43,28 +44,27 @@ class ConsultDoctorFragment : BaseFragment() {
         initSLider()
     }
 
-     fun initSLider(){
-         val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-             context!!,
-             android.R.layout.simple_dropdown_item_1line,
-             benefList
-         )
-         consultBeneficiary.setAdapter(adapter)
+    fun initSLider() {
+        val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
+            context!!,
+            android.R.layout.simple_dropdown_item_1line,
+            benefList
+        )
+        consultBeneficiary.setAdapter(adapter)
 
-         val adapter2: ArrayAdapter<String> = ArrayAdapter<String>(
-             context!!,
-             android.R.layout.simple_dropdown_item_1line,
-             symptomsList
-         )
-         primaryIssue.setAdapter(adapter2)
-     }
+        val adapter2: ArrayAdapter<String> = ArrayAdapter<String>(
+            context!!,
+            android.R.layout.simple_dropdown_item_1line,
+            symptomsList
+        )
+        primaryIssue.setAdapter(adapter2)
+    }
 
 
-
-    fun initOnClick(){
+    fun initOnClick() {
 
         chatButton.setOnClickListener {
-            selecedItem ="chat"
+            selecedItem = "chat"
             chatButton.setImageResource(R.drawable.selectedchat)
             callButton.setImageResource(R.drawable.unselectedcall)
 
@@ -84,25 +84,21 @@ class ConsultDoctorFragment : BaseFragment() {
 
         continueButtonBT2.setOnClickListener {
 
-            when(selecedItem){
+            when (selecedItem) {
                 "call" -> {
 
                     val tag = "call"
-                    val msgText = "please call me. i am not feelign too good. thank you! my phone number is ${paperPrefs.getStringPref(PaperPrefs.PHONE)}"
-                    val FreshchatMessage = FreshchatMessage().setTag(tag).setMessage(msgText)
-                    Freshchat.sendMessage(context!!, FreshchatMessage)
+                    val msgText =
+                        "please call me. i am not feelign too good. thank you! my phone number is ${
+                            paperPrefs.getStringPref(PaperPrefs.PHONE)
+                        }"
 
                     mFragmentNavigation.pushFragment(ConsultConfirmationFragment())
                 }
                 "chat" -> {
-
-                    val userMeta: MutableMap<String, String> = HashMap()
-                    userMeta["gender"] = paperPrefs.getStringPref(PaperPrefs.GENDER)
-                    userMeta["symptoms"] = primaryIssue.getString()
-                    Freshchat.getInstance(context!!).setUserProperties(userMeta)
-
-                    Freshchat.showConversations(context!!);
-                } else->{
+                    ZohoLiveChat.Chat.show()
+                }
+                else -> {
                     showError("Kindly select an option before you proceed.")
                 }
             }
@@ -111,9 +107,9 @@ class ConsultDoctorFragment : BaseFragment() {
         }
     }
 
-     fun initView(){
-         (activity as MainActivity).hideTablayout()
-     }
+    fun initView() {
+        (activity as MainActivity).hideTablayout()
+    }
 
 
 }

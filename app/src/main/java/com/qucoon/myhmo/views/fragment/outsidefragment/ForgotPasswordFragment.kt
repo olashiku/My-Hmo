@@ -28,14 +28,12 @@ class ForgotPasswordFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_forgot_password, container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
         initonClick()
         initViewModel()
         watchView()
@@ -70,9 +68,4 @@ class ForgotPasswordFragment : BaseFragment() {
             mFragmentNavigation.popFragment()
         }
     }
-
-    fun initView(){
-      //  (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Reset Password")
-    }
-
 }

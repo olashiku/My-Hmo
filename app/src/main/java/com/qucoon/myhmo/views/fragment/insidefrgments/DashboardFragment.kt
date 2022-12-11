@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
-import com.freshchat.consumer.sdk.Freshchat
+//import com.freshchat.consumer.sdk.Freshchat
 
 import com.qucoon.myhmo.R
 import com.qucoon.myhmo.database.PaperPrefs
@@ -23,12 +23,15 @@ import kotlinx.android.synthetic.main.fragment_dashboard.*
 import org.koin.java.KoinJavaComponent
 
 
-class DashboardFragment : BaseFragment(),CheckEnrolmentDialogFragment.EnrolmentCallback {
+class DashboardFragment : BaseFragment(), CheckEnrolmentDialogFragment.EnrolmentCallback {
 
     private val dataPasserLiveData = KoinJavaComponent.inject(DataPasserLiveData::class.java)
 
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
 
@@ -39,77 +42,67 @@ class DashboardFragment : BaseFragment(),CheckEnrolmentDialogFragment.EnrolmentC
         initLiveData()
     }
 
+    fun initLiveData() {
+        dataPasserLiveData.value.hasEnroledStatus.observe(viewLifecycleOwner, Observer {
+            if (it.equals("Y")) {
+                dashCardView.visibility = View.VISIBLE
+                enroledCardView.visibility = View.INVISIBLE
+            }
+        })
+    }
 
-     fun initLiveData(){
-         dataPasserLiveData.value.hasEnroledStatus.observe(viewLifecycleOwner, Observer {
-             if(it.equals("Y")){
-                 dashCardView.visibility = View.VISIBLE
-                 enroledCardView.visibility = View.INVISIBLE
-             }
-         })
-     }
-    
-     fun initOnClick(){
+    fun initOnClick() {
 
-         renewButton.setOnClickListener {
-             Toast.makeText(context,"This feature will be available soon", Toast.LENGTH_SHORT).show()
-         }
+        renewButton.setOnClickListener {
+            Toast.makeText(context, "This feature will be available soon", Toast.LENGTH_SHORT)
+                .show()
+        }
 
-         btUpgrade.setOnClickListener {
-             Toast.makeText(context,"This feature will be available soon", Toast.LENGTH_SHORT).show()
-         }
-
-
-         profileButton.setOnClickListener {
-
-             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
-                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
-             } else {
-                 mFragmentNavigation.pushFragment(ProfileFragment())
-             //    mFragmentNavigation.pushFragment(CompleteProfileFragment())
-
-             }
+        btUpgrade.setOnClickListener {
+            Toast.makeText(context, "This feature will be available soon", Toast.LENGTH_SHORT)
+                .show()
+        }
 
 
+        profileButton.setOnClickListener {
 
-         }
+            if (paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")) {
+                mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+            } else {
+                mFragmentNavigation.pushFragment(ProfileFragment())
+            }
+        }
 
-         btRenew.setOnClickListener {
-             mFragmentNavigation.pushFragment(PackageFragment())
-         }
-         consultDoctorButton.setOnClickListener {
+        btRenew.setOnClickListener {
+            mFragmentNavigation.pushFragment(PackageFragment())
+        }
+        consultDoctorButton.setOnClickListener {
 
-             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
-                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
-             } else {
-                 mFragmentNavigation.pushFragment(ConsultDoctorFragment())
-             }
-
-
-
-
-         }
-
-         talkToSuppotButton.setOnClickListener {
+            if (paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")) {
+                mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+            } else {
+                mFragmentNavigation.pushFragment(ConsultDoctorFragment())
+            }
 
 
-             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
-                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
-             } else {
-                 gotoSupportChart()
-             }
+        }
 
-         }
-     }
+        talkToSuppotButton.setOnClickListener {
 
-    fun initView(){
+            if (paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")) {
+                mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+            }
+        }
+    }
+
+    fun initView() {
         (activity as MainActivity).showTablayout()
         (activity as MainActivity).hideToolsBar()
 
         usernamePersonTV.setText(paperPrefs.getStringPref(PaperPrefs.FIRSTNAME))
 
 
-        if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("Y")){
+        if (paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("Y")) {
 
             dashCardView.visibility = View.VISIBLE
             enroledCardView.visibility = View.INVISIBLE
@@ -118,36 +111,37 @@ class DashboardFragment : BaseFragment(),CheckEnrolmentDialogFragment.EnrolmentC
             enroledCardView.visibility = View.VISIBLE
         }
 
-         if(paperPrefs.getStringPref(PaperPrefs.IMAGE).isNotEmpty()){
-             Glide.with(this).load(paperPrefs.getStringPref(PaperPrefs.IMAGE)).into(circularImageView);
-         }
-
-        println("what i am expecting "+ paperPrefs.getStringPref(PaperPrefs.DURATION) +" - " +  paperPrefs.getStringPref(PaperPrefs.DAYSLEFT) +" days left")
-
-        tvPackageName.text= paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).capitalize()
-        tvPackageDuration.text = paperPrefs.getStringPref(PaperPrefs.DURATION) +" - " +  paperPrefs.getStringPref(PaperPrefs.DAYSLEFT) +" days left"
-        if(paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).equals("gold")){
-            ivPackageType.setImageResource(R.drawable.golddashimage)
-        } else if(paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).equals("silver")){
-            ivPackageType.setImageResource(R.drawable.silverdashimage)
-        }else if(paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).equals("platinum")){
-            ivPackageType.setImageResource(R.drawable.platinumdashimage)
+        if (paperPrefs.getStringPref(PaperPrefs.IMAGE).isNotEmpty()) {
+            Glide.with(this).load(paperPrefs.getStringPref(PaperPrefs.IMAGE))
+                .into(circularImageView);
         }
 
+        println(
+            "what i am expecting " + paperPrefs.getStringPref(PaperPrefs.DURATION) + " - " + paperPrefs.getStringPref(
+                PaperPrefs.DAYSLEFT
+            ) + " days left"
+        )
 
-    }
-
-
-    fun gotoSupportChart(){
-
-        Freshchat.showConversations(context!!);
-
+        tvPackageName.text = paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).capitalize()
+        tvPackageDuration.text =
+            paperPrefs.getStringPref(PaperPrefs.DURATION) + " - " + paperPrefs.getStringPref(
+                PaperPrefs.DAYSLEFT
+            ) + " days left"
+        if (paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).equals("gold")) {
+            ivPackageType.setImageResource(R.drawable.golddashimage)
+        } else if (paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).equals("silver")) {
+            ivPackageType.setImageResource(R.drawable.silverdashimage)
+        } else if (paperPrefs.getStringPref(PaperPrefs.SUBSCRBEDPACKAGE).equals("platinum")) {
+            ivPackageType.setImageResource(R.drawable.platinumdashimage)
+        }
     }
 
     override fun EnrolmentStatus(value: Boolean) {
-        when(value){
-            true->{mFragmentNavigation.pushFragment(PackageFragment())}
-            false->{
+        when (value) {
+            true -> {
+                mFragmentNavigation.pushFragment(PackageFragment())
+            }
+            false -> {
                 showError("You have to enrol before you can perform any activity on MYHMO")
             }
         }

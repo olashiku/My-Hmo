@@ -29,21 +29,18 @@ class PasswordFragment : BaseFragment() {
     val etEmail :String by argument("etEmail")
     val etPhoneno :String by argument("etPhoneno")
 
-
     val outsideViewModel: OutsideViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_password, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initviewModel()
-        initView()
         initonClick()
         watchPassword()
     }
@@ -55,7 +52,6 @@ class PasswordFragment : BaseFragment() {
      fun watchPassword(){
          etPassword1.doAfterTextChanged { Validator.isValidPassword2(etPassword1)}
          etPassword2.doAfterTextChanged { Validator.isValidPassword2(etPassword2)}
-
      }
 
 
@@ -68,9 +64,7 @@ class PasswordFragment : BaseFragment() {
                  && Utils.checkpinmatch(etPassword1,etPassword1,context!!)){
                  generateAuthToken()
              }
-
          }
-
          backButtonConfirmPassword.setOnClickListener { mFragmentNavigation.popFragment() }
      }
 
@@ -91,8 +85,5 @@ class PasswordFragment : BaseFragment() {
 
      }
 
-    fun initView(){
-      // (activity as OutsideActivity?)!!.showToolsbarAndSetTitle("Create Password")
-    }
 
 }

@@ -49,10 +49,6 @@ class CompleteProfileFragment : BaseFragment(),DatePickerBottomSheetFragment.OnD
         initSpinner()
     }
 
-
-
-
-
      fun initSpinner(){
          val adapter: ArrayAdapter<String> = ArrayAdapter<String>(context!!, android.R.layout.simple_dropdown_item_1line, Gender)
          genderspinner.setAdapter(adapter)
@@ -82,11 +78,8 @@ class CompleteProfileFragment : BaseFragment(),DatePickerBottomSheetFragment.OnD
 
 
          continueButtonBT.setOnClickListener {
-
              if(genderspinner.getString().isNotEmpty() && address.getString().isNotEmpty() && dobEdittext.getString().isNotEmpty()){
-
                  dashboardViewModel.enrolmentcomplete(address.getString(),dobEdittext.getString(),genderspinner.getString(),imageurl)
-
              }else {
                  showError("Please fill the form with the right values")
              }

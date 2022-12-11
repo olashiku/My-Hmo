@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
+import android.os.Environment
 import android.os.Handler
 import android.util.Patterns
 import android.view.View
@@ -13,6 +14,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.crashlytics.internal.common.CommonUtils
+import java.io.File
+import java.io.IOException
 
 object Utils {
 
@@ -25,6 +28,17 @@ object Utils {
     }
 
 
+    @Throws(IOException::class)
+    public fun getImageFile(): File? {
+        val imageFileName = "JPEG_" + System.currentTimeMillis() + "_"
+        val storageDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "Camera")
+        storageDir.mkdirs()
+        System.out.println(storageDir.getAbsolutePath())
+        if (storageDir.exists()) println("File exists") else println("File not exists")
+        val file: File = File.createTempFile(imageFileName, ".jpg", storageDir)
+        // currentPhotoPath = "file:" + file.getAbsolutePath()
+        return file
+    }
 
 
 

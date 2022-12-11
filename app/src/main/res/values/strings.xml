@@ -17,8 +17,8 @@
     <string name="home">Home</string>
     <string name="fcm_token">%s</string>
 
-    <string name="secretkey1">BGtUcK8C9duJHTz6YVfdWYMsR/lB0b2yYKJomY1j</string>
-    <string name="privateaccesskey1">AKIAXFUE6YJTSK33CB4B</string>
+    <string name="secretkey1">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</string>
+    <string name="privateaccesskey1">AKIATCLAIGCFC65VYWC6</string>
 
 
     <string name="phone_req_reason">We need
@@ -58,6 +58,8 @@
         <b>SMS permission</b>
         to analyse your income and expenses.
     </string>
+    <string name="picture_from_camera">Picture from camera</string>
+    <string name="picture_from_gallary">Picture from gallary</string>
 
 
 </resources>

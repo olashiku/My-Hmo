@@ -26,8 +26,6 @@ class DashSLiderFragment : Fragment() {
 
     private val onboarddata: DashboardData by argument(DASHBOARDDATA)
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

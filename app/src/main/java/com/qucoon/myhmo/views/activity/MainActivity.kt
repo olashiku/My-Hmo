@@ -1,29 +1,43 @@
 package com.qucoon.myhmo.views.activity
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Html
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.TypefaceSpan
-import com.example.neptune.utils.Constants
+import androidx.core.content.FileProvider
+import com.baurine.permissionutil.PermissionUtil
+import com.example.neptune.utils.Utils
 import com.example.neptune.utils.gone
-import com.example.neptune.utils.makeStatusBarTransparent
 import com.example.neptune.utils.show
-import com.freshchat.consumer.sdk.Freshchat
-import com.freshchat.consumer.sdk.FreshchatConfig
+import com.github.euzee.permission.PermissionCallback
+import com.qucoon.keystonemobile.utils.CheckPermissionUtil
+import com.qucoon.myhmo.BuildConfig
 import com.qucoon.myhmo.R
 import com.qucoon.myhmo.database.PaperPrefs
-import com.qucoon.myhmo.database.getStringPref
+import com.qucoon.myhmo.livedata.DataPasserLiveData
+import com.qucoon.myhmo.utils.CommonUtilz
 import com.qucoon.myhmo.views.fragment.insidefrgments.ApointmentFragment
-import com.qucoon.myhmo.views.fragment.insidefrgments.DashboardFragment
 import com.qucoon.myhmo.views.fragment.insidefrgments.SettingsFragment
+import com.qucoon.myhmo.views.fragment.insidefrgments.dashoard.enrolment.UploadPictureFragment
 import com.qucoon.royalexchange.ui.base.BaseActivity
 import com.qucoon.royalexchange.ui.base.BaseFragment
+import com.yalantis.ucrop.UCrop
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
+
 
 class MainActivity : BaseActivity() {
 
-    lateinit var  paperPrefs:PaperPrefs
+    lateinit var paperPrefs: PaperPrefs
+    private val GALLARYCODE = 101
+    private val CAMERACODE = 111
+    private val dataPasserLiveData: DataPasserLiveData by inject()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,73 +46,54 @@ class MainActivity : BaseActivity() {
         initView()
         initBottomNavigation()
         showToolsbarAndSetTitle("Dashboard")
-        initFreshChat()
     }
 
 
-    fun initFreshChat(){
-        val config = FreshchatConfig(Constants.FRESHCHARAPPID ,Constants.FRESHCHATKEY )
-        config.setDomain(Constants.FRESHCHATDOMAIN)
-        config.setCameraCaptureEnabled(false);
-        config.setGallerySelectionEnabled(false);
-        config.setResponseExpectationEnabled(true);
+    fun showToolsbarAndSetTitle(title: String) {
 
-
-        val freshchatUser = Freshchat.getInstance(this).user
-        freshchatUser.firstName = paperPrefs.getStringPref(PaperPrefs.FIRSTNAME)
-        freshchatUser.lastName =  paperPrefs.getStringPref(PaperPrefs.LASTNAME)
-        freshchatUser.email = paperPrefs.getStringPref(PaperPrefs.EMAIL)
-        freshchatUser.setPhone("+234",  paperPrefs.getStringPref(PaperPrefs.PHONE))
-
-        Freshchat.getInstance(this).setUser(freshchatUser).init(config)
-    }
-
-    fun showToolsbarAndSetTitle(title:String){
-
-        println("soigothere" + title)
         val typefaceSpan = TypefaceSpan("poppinsregular.ttf")
         val str = SpannableString(title)
         str.setSpan(typefaceSpan, 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         supportActionBar!!.title = Html.fromHtml("<font color='#ffffff'>$title</font>")
-      //
+
     }
 
-     fun setActoonBarTitle(title:String){
-         supportActionBar!!.title = Html.fromHtml("<font color='#ffffff'>$title</font>")
-     }
+    fun setActoonBarTitle(title: String) {
+        supportActionBar!!.title = Html.fromHtml("<font color='#ffffff'>$title</font>")
+    }
 
-     fun hideTablayout(){
-         tabLayout.gone()
-     }
+    fun hideTablayout() {
+        tabLayout.gone()
+    }
 
-     fun showTablayout(){
-         tabLayout.show()
-     }
+    fun showTablayout() {
+        tabLayout.show()
+    }
 
 
-    fun hideToolsBar(){
+    fun hideToolsBar() {
         supportActionBar!!.hide()
     }
 
-    fun initView(){
+    fun initView() {
         paperPrefs = PaperPrefs(application)
         supportActionBar!!.show()
+        val fragment = listOf(UploadPictureFragment(), ApointmentFragment(), SettingsFragment())
 
-        val fragment = listOf(DashboardFragment(), ApointmentFragment(), SettingsFragment())
-        initFragNavController(this,
-            fragment as List<BaseFragment>,"MAINACTIVITY",supportFragmentManager,R.id.content)
+        initFragNavController(
+            this,
+            fragment as List<BaseFragment>, "MAINACTIVITY", supportFragmentManager, R.id.content
+        )
 
     }
 
-    fun initBottomNavigation(){
+    fun initBottomNavigation() {
         tabLayout.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home_menu -> {
                     setActoonBarTitle("Dashboard")
                     switchFragment(HOME)
-
                 }
-
                 R.id.search_menu -> {
                     setActoonBarTitle("Your Health")
                     switchFragment(SEARCHMENU)
@@ -112,14 +107,55 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-    companion object{
-        val  HOME=0
-        val  SEARCHMENU=1
-        val  PROFILEMENU=2
+        if (resultCode == Activity.RESULT_OK && requestCode == CAMERACODE) {
+            val uri: Uri = data!!.data!!
+            showCropperActivity(uri)
+        } else if (resultCode == Activity.RESULT_OK && requestCode == GALLARYCODE) {
+            val uri: Uri = data!!.data!!
+            showCropperActivity(uri)
+
+        } else if (resultCode == Activity.RESULT_OK && requestCode == UCrop.REQUEST_CROP) {
+            val uri: Uri? = UCrop.getOutput(data!!)
+            dataPasserLiveData.imageUri.postValue(uri)
+        }
+    }
+
+    fun showCropperActivity(sourceUri: Uri) {
+        val file = Utils.getImageFile()
+        val destinationURI = Uri.fromFile(file)
+        UCrop.of(sourceUri, destinationURI)
+            .withAspectRatio(16F, 9F)
+            .start(this);
+    }
 
 
+    fun openCamera() {
+        val pictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        val file = Utils.getImageFile()
+        val uri: Uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            FileProvider.getUriForFile(
+                applicationContext,
+                BuildConfig.APPLICATION_ID + ".provider",
+                file!!
+            ) else Uri.fromFile(file)
+        pictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+        startActivityForResult(pictureIntent, CAMERACODE)
 
     }
-   
+
+    fun openGallary() {
+        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(galleryIntent, GALLARYCODE)
+    }
+
+
+    companion object {
+        val HOME = 0
+        val SEARCHMENU = 1
+        val PROFILEMENU = 2
+    }
+
 }

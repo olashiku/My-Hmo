@@ -22,16 +22,7 @@ import kotlinx.android.synthetic.main.fragment_beneficiary_entry.etEmail
 import kotlinx.android.synthetic.main.fragment_category_display.*
 import java.io.Serializable
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [BeneficiaryEntry.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BeneficiaryEntry : BaseFragment() {
 
     val packagee:String  by argument("package")
@@ -63,7 +54,6 @@ class BeneficiaryEntry : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         initOnCLick()
         initView()
-        watchInputFields()
         initRecycler()
     }
 
@@ -72,19 +62,8 @@ class BeneficiaryEntry : BaseFragment() {
 
          beneficiarylist.add(BeneficiaryDetails(paperPrefs.getStringPref(PaperPrefs.FIRSTNAME),paperPrefs.getStringPref(PaperPrefs.LASTNAME),
              paperPrefs.getStringPref(PaperPrefs.EMAIL), paperPrefs.getStringPref(PaperPrefs.PHONE),"Y"))
-
-
-
-         println("this is the number of subscribers" + subscriber)
          subscriberInHouse += subscriber.toInt() -1
-         println("this is the number of subscribers readded" + subscriberInHouse)
-
      }
-
-
-    fun watchInputFields(){
-
-    }
 
      fun initOnCLick(){
          backButtonBeneficiary.setOnClickListener {
@@ -131,15 +110,10 @@ class BeneficiaryEntry : BaseFragment() {
                          initRecycler()
                          Utils.hideKeyboardFrom(context!!,view!!)
                      }
-
-
-
                  } else {
                      Toast.makeText(context,"Please input values in the required field.",Toast.LENGTH_SHORT).show()
                  }
              } else {
-
-
                  mFragmentNavigation.pushFragment(ConfirmationFragment().withArguments(
                      "package" to type,
                      "duration" to duration,
@@ -148,13 +122,7 @@ class BeneficiaryEntry : BaseFragment() {
                      "type" to type,
                      "subtype" to subtype,
                      "subscriber_info" to beneficiarylist.toList() as Serializable ))
-
-
-
              }
-
-
-
          }
      }
 
@@ -178,7 +146,6 @@ class BeneficiaryEntry : BaseFragment() {
                       remove.setOnClickListener{
                           removeBeneficiary(beneficiarylist[position], beneficiarylist.size)
                       }
-
                   },
                   { position -> val item = beneficiarylist[position] })
           }
@@ -195,20 +162,14 @@ class BeneficiaryEntry : BaseFragment() {
                 benetitle.gone()
                 subscriberInHouse  = beneficiarylist.size
                 subscriberInHouse += subscriber.toInt() -1
-                println("subscriberInHouse $subscriberInHouse")
                 benefSubmitButton.setText("Submit")
                 iscomplete = false
-                println("this is the value i am looking for empty value " +subscriberInHouse)
-
             }else {
                 iscomplete = false
                 beneficiarylist.remove(index)
                 subscriberInHouse  = subscriberInHouse +1
                 benefSubmitButton.setText("${subscriberInHouse} beneficiary(s) left")
                 initRecycler()
-                println("this is the value i am looking for has value " +subscriberInHouse)
-
-
             }
         } else {
             Toast.makeText(context,"You cannot delete yourself as a sponsor", Toast.LENGTH_SHORT).show()

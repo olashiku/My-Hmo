@@ -23,22 +23,13 @@ import com.qucoon.myhmo.views.fragment.insidefrgments.dashoard.enrolment.Package
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_apointment.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- *
- */
-class ApointmentFragment : BaseFragment(),CheckEnrolmentDialogFragment.EnrolmentCallback{
+class ApointmentFragment : BaseFragment(), CheckEnrolmentDialogFragment.EnrolmentCallback {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_apointment, container, false)
     }
 
@@ -48,86 +39,79 @@ class ApointmentFragment : BaseFragment(),CheckEnrolmentDialogFragment.Enrolment
         initOnClick()
     }
 
-     fun initOnClick(){
+    fun initOnClick() {
 
-         myProfileButton.setOnClickListener {
-
-             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
-                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
-             } else {
-                 mFragmentNavigation.pushFragment(ProfileFragment())
-             }
-
-
-         }
-
-         healthtipsButton.setOnClickListener {
-
-             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
-                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
-             } else {
-                 mFragmentNavigation.pushFragment(HealthTipsFragment())
-             }
+        myProfileButton.setOnClickListener {
+            if (paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")) {
+                mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+            } else {
+                mFragmentNavigation.pushFragment(ProfileFragment())
+            }
+        }
 
 
-         }
-
-         consultDoctorButtonn.setOnClickListener {
-
-             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
-                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
-             } else {
-                 mFragmentNavigation.pushFragment(ConsultDoctorFragment())
-             }
+        healthtipsButton.setOnClickListener {
+            if (paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")) {
+                mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+            } else {
+                mFragmentNavigation.pushFragment(HealthTipsFragment())
+            }
 
 
-         }
+        }
 
-         accessSecondaryCareButton.setOnClickListener {
+        consultDoctorButtonn.setOnClickListener {
 
-             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
-                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
-             } else {
-              //   mFragmentNavigation.pushFragment(SecondaryCareFragment())
-                 showError("feature will be available soon.")
-
-             }
+            if (paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")) {
+                mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+            } else {
+                mFragmentNavigation.pushFragment(ConsultDoctorFragment())
+            }
 
 
-         }
+        }
 
-         viewHospitalButton.setOnClickListener {
-             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
-                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
-             } else {
-                 mFragmentNavigation.pushFragment(HospitalFragment())
-             }
-         }
+        accessSecondaryCareButton.setOnClickListener {
 
-         viewExposirelist.setOnClickListener {
-             if(paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")){
-                 mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
-             } else {
-                 mFragmentNavigation.pushFragment(ExposirelistFragment())
-             }
+            if (paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")) {
+                mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+            } else {
+                //   mFragmentNavigation.pushFragment(SecondaryCareFragment())
+                showError("feature will be available soon.")
+
+            }
 
 
-         }
+        }
+
+        viewHospitalButton.setOnClickListener {
+            if (paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")) {
+                mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+            } else {
+                mFragmentNavigation.pushFragment(HospitalFragment())
+            }
+        }
+
+        viewExposirelist.setOnClickListener {
+            if (paperPrefs.getStringPref(PaperPrefs.ENROLSTATUS).equals("N")) {
+                mFragmentNavigation.openDialogFragment(CheckEnrolmentDialogFragment())
+            } else {
+                mFragmentNavigation.pushFragment(ExposirelistFragment())
+            }
+        }
+    }
 
 
-
-     }
-
-    fun initView(){
-
+    fun initView() {
         (activity as MainActivity).showTablayout()
-
     }
 
     override fun EnrolmentStatus(value: Boolean) {
-        when(value){
-            true->{mFragmentNavigation.pushFragment(PackageFragment())}
-            false->{
+        when (value) {
+            true -> {
+                mFragmentNavigation.pushFragment(PackageFragment())
+            }
+            false -> {
                 showError("You have to enrol before you can perform any activity on MYHMO")
             }
         }
