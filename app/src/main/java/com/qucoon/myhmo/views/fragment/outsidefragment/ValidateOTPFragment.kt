@@ -14,7 +14,7 @@ import com.qucoon.myhmo.views.activity.OutsideActivity
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_package.*
 import kotlinx.android.synthetic.main.fragment_validate_o_t_p.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ValidateOTPFragment : BaseFragment() {

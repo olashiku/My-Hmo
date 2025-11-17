@@ -25,7 +25,7 @@ import org.koin.java.KoinJavaComponent
 
 class DashboardFragment : BaseFragment(), CheckEnrolmentDialogFragment.EnrolmentCallback {
 
-    private val dataPasserLiveData = KoinJavaComponent.inject(DataPasserLiveData::class.java)
+    private val dataPasserLiveData = KoinJavaComponent.inject<DataPasserLiveData>(DataPasserLiveData::class.java)
 
     override fun onCreateView(
         inflater: LayoutInflater,

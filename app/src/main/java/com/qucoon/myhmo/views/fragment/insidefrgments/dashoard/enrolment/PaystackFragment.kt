@@ -17,7 +17,7 @@ import com.qucoon.myhmo.database.savePref
 import com.qucoon.myhmo.viewmodel.DashboardViewModel
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_paystack.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PaystackFragment : BaseFragment() {
     val dashboardViewModel: DashboardViewModel by viewModel()

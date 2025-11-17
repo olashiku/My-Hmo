@@ -29,11 +29,12 @@ class customview(context: Context, attrs: AttributeSet): LinearLayout(context, a
     }
 
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun dispatchDraw(canvas: Canvas) {
+        super.dispatchDraw(canvas)
         val paint = Paint()
-        paint.setColor(Color.RED)
-        paint.setStrokeWidth(1.5f)
-        paint.setStyle(Paint.Style.STROKE)
-        canvas!!.drawRect(0F, 0F, width.toFloat(), height.toFloat(), paint)
+        paint.color = Color.RED
+        paint.strokeWidth = 1.5f
+        paint.style = Paint.Style.STROKE
+        canvas.drawRect(0F, 0F, width.toFloat(), height.toFloat(), paint)
     }
 }

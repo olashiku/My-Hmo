@@ -17,7 +17,7 @@ import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_category_display.*
 import kotlinx.android.synthetic.main.fragment_confirmation.*
 import kotlinx.android.synthetic.main.fragment_confirmation.submitButton
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.Serializable
 
 
@@ -64,6 +64,7 @@ class ConfirmationFragment : BaseFragment(),AutomateRequestDialogFragment.Automa
 
              when(isChecked) {
                  true->{ mFragmentNavigation.openDialogFragment(AutomateRequestDialogFragment()) }
+                 false -> { /* Do nothing */ }
              }
          }
      }

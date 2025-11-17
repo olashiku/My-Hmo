@@ -17,7 +17,7 @@ import com.qucoon.royalexchange.utils.argument
 import com.qucoon.royalexchange.utils.withArguments
 import kotlinx.android.synthetic.main.fragment_package.*
 import kotlinx.android.synthetic.main.fragment_password.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 

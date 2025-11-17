@@ -37,7 +37,7 @@ class UploadPictureFragment : BaseFragment(),ImagePickerFragment.ImagePickerFrag
 
      var imageURL:String =""
     lateinit var credentialsProvider: AWSCredentials
-    private val dataPasserLiveData = KoinJavaComponent.inject(DataPasserLiveData::class.java)
+    private val dataPasserLiveData = KoinJavaComponent.inject<DataPasserLiveData>(DataPasserLiveData::class.java)
 
 
     override fun onCreateView(

@@ -29,11 +29,11 @@ class customview_dashboard1(context: Context, attrs: AttributeSet): LinearLayout
     }
 
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun dispatchDraw(canvas: Canvas) {
         val paint = Paint()
         paint.setColor(Color.RED)
         paint.setStrokeWidth(1.5f)
         paint.setStyle(Paint.Style.STROKE)
-        canvas!!.drawRect(0F, 0F, width.toFloat(), height.toFloat(), paint)
+        canvas.drawRect(0F, 0F, width.toFloat(), height.toFloat(), paint)
     }
 }

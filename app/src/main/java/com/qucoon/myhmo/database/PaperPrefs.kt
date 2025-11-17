@@ -57,17 +57,17 @@ class PaperPrefs {
     private fun getStringFromPref(key:String):String{
         return runBlocking {
             async(Dispatchers.IO){
-                Paper.book().read(key,"")
+                Paper.book().read<String>(key, "")
             }.await()
-        }
+        } ?: ""
     }
 
-    private fun getStringFromPref(key:String,deafult:String):String{
+    private fun getStringFromPref(key: String, deafult: String): String {
         return runBlocking {
-            async(Dispatchers.IO){
-                Paper.book().read(key,deafult)
+            async(Dispatchers.IO) {
+                Paper.book().read<String>(key, deafult)
             }.await()
-        }
+        } ?: deafult
     }
 
     private fun saveBooleanToPref(key:String,value:Boolean){
@@ -81,17 +81,17 @@ class PaperPrefs {
     private fun getBooleanFromPref(key:String):Boolean{
         return runBlocking {
             async(Dispatchers.IO){
-                Paper.book().read(key,false)
+                Paper.book().read<Boolean>(key, false)
             }.await()
-        }
+        } ?: false
     }
 
     private fun getBooleanFromPref(key:String,defaultvalue:Boolean):Boolean{
         return runBlocking {
             async(Dispatchers.IO){
-                Paper.book().read(key,defaultvalue)
+                Paper.book().read<Boolean>(key, defaultvalue)
             }.await()
-        }
+        } ?: defaultvalue
     }
 
 
@@ -107,10 +107,10 @@ class PaperPrefs {
 
 
 
-    private fun <T:Any> getAnyFromPref(key:String):T{
+    private fun <T:Any> getAnyFromPref(key:String):T? {
         return runBlocking {
-            async(Dispatchers.IO){
-                Paper.book().read(key) as T
+            async(Dispatchers.IO) {
+                Paper.book().read<T>(key)
             }.await()
         }
     }
@@ -144,7 +144,7 @@ class PaperPrefs {
         return getBooleanFromPref(this,default)
     }
 
-    fun <T:Any> String.getAnyPref():T{
+    fun <T:Any> String.getAnyPref():T?{
         return getAnyFromPref(this)
     }
     fun <T:Any> String.saveAnyPref(data:T){
@@ -178,7 +178,7 @@ fun PaperPrefs.getBooleanPref(key: String):Boolean{
 fun PaperPrefs.getBooleanPref(key: String, defaultValue:Boolean):Boolean{
     return key.getBooleanPref(defaultValue)
 }
-fun <T:Any> PaperPrefs.getAnyPref(key: String):T{
+fun <T:Any> PaperPrefs.getAnyPref(key: String):T?{
     return key.getAnyPref()
 }
 fun String?.saveToPref(paperPrefs: PaperPrefs,key: String){

@@ -40,7 +40,7 @@ public class CommonUtilz {
         Snackbar snackbar = Snackbar.make(view, message, Snackbar.LENGTH_LONG)
                 .setAction("Action", null);
         View sbView = snackbar.getView();
-        sbView.setBackgroundColor(ContextCompat.getColor(context, R.color.red));
+        sbView.setBackgroundColor(ContextCompat.getColor(context, R.color.colorAccent));
         snackbar.show();
     }
 

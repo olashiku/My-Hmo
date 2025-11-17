@@ -3,22 +3,13 @@ package com.qucoon.myhmo.views.fragment.outsidefragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
-
-import com.example.neptune.utils.afterTextChanged
 import com.example.neptune.utils.getString
 import com.example.neptune.viewmodel.observeChange
-import com.google.firebase.crashlytics.internal.common.CommonUtils
-
 import com.qucoon.myhmo.R
-import com.qucoon.myhmo.database.PaperPrefs
-import com.qucoon.myhmo.database.getStringPref
-import com.qucoon.myhmo.popups.utilitypupups.SignoutBottomSheetDialogFragment
-import com.qucoon.myhmo.popups.utilitypupups.SingleButtonBottomSheetDialogFragment
 import com.qucoon.myhmo.repository.OutsideRepository
 import com.qucoon.myhmo.viewmodel.OutsideViewModel
 import com.qucoon.myhmo.views.activity.MainActivity
@@ -26,10 +17,8 @@ import com.qucoon.myhmo.views.activity.OutsideActivity
 import com.qucoon.nibbs.utils.Validator
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 
 class LoginFragment : BaseFragment() {

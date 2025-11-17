@@ -14,8 +14,8 @@ import com.qucoon.myhmo.database.getStringPref
 import com.qucoon.myhmo.views.activity.MainActivity
 import com.qucoon.myhmo.views.fragment.insidefrgments.YourHealth.consultation.ConsultConfirmationFragment
 import com.qucoon.royalexchange.ui.base.BaseFragment
-import com.zoho.livechat.android.ZohoLiveChat
-import com.zoho.salesiqembed.ZohoSalesIQ
+// import com.zoho.livechat.android.ZohoLiveChat
+// import com.zoho.salesiqembed.ZohoSalesIQ
 import kotlinx.android.synthetic.main.fragment_consult_doctor.*
 
 
@@ -96,7 +96,8 @@ class ConsultDoctorFragment : BaseFragment() {
                     mFragmentNavigation.pushFragment(ConsultConfirmationFragment())
                 }
                 "chat" -> {
-                    ZohoLiveChat.Chat.show()
+                    // ZohoLiveChat.Chat.show() // Temporarily disabled - Zoho SDK not available
+                    showError("Chat feature temporarily unavailable")
                 }
                 else -> {
                     showError("Kindly select an option before you proceed.")

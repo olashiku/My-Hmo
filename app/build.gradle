@@ -18,7 +18,6 @@ android {
 
     
     compileSdkVersion 33
-    buildToolsVersion "29.0.3"
     defaultConfig {
         manifestPlaceholders = [file_provider: "com.qucoon.myhmo"]
         applicationId "com.qucoon.myhmo"
@@ -61,14 +60,13 @@ dependencies {
 
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-    implementation 'androidx.multidex:multidex:2.0.1'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
 
-    //FragNavigation
-    implementation 'com.ncapdevi:frag-nav:3.2.0'
+    //FragNavigation - using local module since JCenter is sunset
+    implementation project(':fragnav')
 
     //Paper Pref
-    implementation 'io.paperdb:paperdb:2.6'
+    implementation 'io.github.pilgr:paperdb:2.7.2'
 
 
     //Circular Image-View
@@ -97,27 +95,19 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    / *LiveData lib*/
+    /*LiveData lib*/
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime:2.8.7'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.8.7'
-    kapt "android.arch.lifecycle:compiler:1.1.1"
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.5.1'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.5.1'
     //Room
-    implementation 'androidx.room:room-runtime:2.6.1'
-   kapt  'androidx.room:room-compiler:2.6.1'
+    implementation 'androidx.room:room-runtime:2.5.2'
+    kapt 'androidx.room:room-compiler:2.5.2'
     //MultiDex
     implementation 'androidx.multidex:multidex:2.0.1'
-    // Koin Android ViewModel feature
-    implementation 'org.koin:koin-android-viewmodel:4.1.0-Beta3'
-    implementation "org.koin:koin-android:4.1.0-Beta3"
-    implementation "org.koin:koin-core:4.1.0-Beta3"
-    // AndroidX (based on koin-android)
-    // Koin AndroidX Scope feature
-    implementation "org.koin:koin-androidx-scope:4.1.0-Beta3"
-    // Koin AndroidX ViewModel feature
-    implementation "org.koin:koin-androidx-viewmodel:4.1.0-Beta3"
-    implementation "org.koin:koin-java:3.0.0"
-    //implementation "org.koin:koin-android-architecture:2.0.0-rc-2"
+    // Koin for Android
+    implementation "io.insert-koin:koin-android:3.2.0"
+    implementation "io.insert-koin:koin-androidx-navigation:3.2.0"
+    implementation "io.insert-koin:koin-core:3.2.0"
 
 
     implementation 'com.google.android.gms:play-services-location:16.0.0'
@@ -125,8 +115,6 @@ dependencies {
 
 
     implementation 'com.github.baurine:permission-util:1.0.3'
-    implementation 'com.github.baurine:permission-util:1.0.3'
-    implementation 'com.github.florent37:runtime-permission:1.1.1'
     implementation 'com.github.euzee:permissionUtil:1.0.7'
 
 
@@ -150,23 +138,20 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
 
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.1'
-    implementation 'com.agrawalsuneet.androidlibs:loaderspack:1.2.3'
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
    // implementation 'com.github.freshdesk:freshchat-android:3.6.5'
 
-    implementation 'com.github.dueeeke:dk-tablayout:1.0.2'
-
     implementation 'com.github.RobertApikyan:SegmentedControl:1.2.0'
-    implementation 'com.mikhaellopez:circularimageview:4.2.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
   //  implementation 'com.cometchat:pro-android-chat-sdk:2.1.5'
   //  implementation 'com.github.dhaval2404:imagepicker:1.7.1'
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
-    implementation 'com.zoho.salesiq:mobilisten:4.2.1'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    // Zoho SalesIQ - commented out due to availability issues, uncomment if needed
+    // implementation 'com.zoho.salesiq:mobilisten:4.2.1'
     implementation 'com.github.yalantis:ucrop:2.2.6'
 
 

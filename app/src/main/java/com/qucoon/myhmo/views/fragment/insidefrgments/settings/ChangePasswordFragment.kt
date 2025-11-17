@@ -17,7 +17,7 @@ import com.qucoon.nibbs.utils.Validator
 import com.qucoon.royalexchange.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_change_password.*
 import kotlinx.android.synthetic.main.fragment_signup.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ChangePasswordFragment : BaseFragment(),SingleButtonBottomSheetDialogFragment.PerformActionCallBack{

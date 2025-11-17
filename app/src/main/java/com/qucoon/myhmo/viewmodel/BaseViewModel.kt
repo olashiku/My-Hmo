@@ -29,6 +29,9 @@ open class BaseViewModel:ViewModel(), CoroutineScope,LifecycleObserver {
                 is UseCaseResult.Success -> observer.value = response.data
                 is UseCaseResult.FailedAPI -> showError.value = getError(response.data)
                 is UseCaseResult.Error -> showError.value = response.exception.handleException()
+                is UseCaseResult.ActivateProfile -> observer.value = response.data
+                is UseCaseResult.Failed -> showError.value = response.errorMessage
+                is UseCaseResult.SessionTimeOut -> showError.value = response.errorMessage
             }
         }
     }

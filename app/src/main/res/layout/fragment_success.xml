@@ -8,22 +8,23 @@
         tools:context=".views.fragment.outsidefragment.SuccessFragment">
 
 
-    <com.agrawalsuneet.loaderspack.loaders.MultipleRippleLoader
+    <!-- Replaced MultipleRippleLoader with FrameLayout + ProgressBar -->
+    <FrameLayout
             android:id="@+id/multipleRippleLoader"
-            android:layout_width="00dp"
+            android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_marginTop="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:multipleripple_animDuration="2000"
-            app:multipleripple_circleColor="@color/green"
-            app:multipleripple_circleInitialRadius="70dp"
-            app:multipleripple_fromAlpha="0.2"
-            app:multipleripple_interpolator="@android:anim/decelerate_interpolator"
-            app:multipleripple_noOfRipples="4"
-            app:multipleripple_toAplha="0.1" />
+            app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/green" />
+    </FrameLayout>
 
     <ImageView
             android:id="@+id/imageView6"

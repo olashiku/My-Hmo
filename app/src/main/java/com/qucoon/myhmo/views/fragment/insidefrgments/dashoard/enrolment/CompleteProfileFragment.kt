@@ -27,7 +27,7 @@ class CompleteProfileFragment : BaseFragment(),DatePickerBottomSheetFragment.OnD
 
 
     val imageurl:String by argument("imageurl")
-    private val dataPasserLiveData = KoinJavaComponent.inject(DataPasserLiveData::class.java)
+    private val dataPasserLiveData = KoinJavaComponent.inject<DataPasserLiveData>(DataPasserLiveData::class.java)
 
 
     val dashboardViewModel: DashboardViewModel by viewModel()
